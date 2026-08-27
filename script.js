@@ -42,7 +42,7 @@ const translations = {
     aboutBody: "I am pursuing a bachelor's degree in Computer Science and Physics at Northeastern University in Boston and expect to graduate in May 2027. I enjoy game development and software engineering, working primarily with C++, Java, and Python.",
     contactTitle: "Contact",
     footerText: "Built with vanilla HTML/CSS.",
-    toggleLabel: "中文",
+    toggleLabel: "中/En",
     toggleAriaLabel: "Switch to Chinese",
     toggleTitle: "Switch to Chinese"
   },
@@ -85,7 +85,7 @@ const translations = {
     aboutBody: "我在东北大学波士顿校区攻读计算机科学与物理学士学位，预计 2027 年 5 月毕业。我专注于游戏开发与软件工程，主要使用 C++、Java 和 Python。",
     contactTitle: "联系方式",
     footerText: "使用原生 HTML/CSS 构建。",
-    toggleLabel: "EN",
+    toggleLabel: "中/En",
     toggleAriaLabel: "切换至英文",
     toggleTitle: "切换至英文"
   }
