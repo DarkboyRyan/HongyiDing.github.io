@@ -1,98 +1,131 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hongyi Ding | Portfolio</title>
-  <meta name="description" content="HongyiDing - Northeastern CS × Physics | Game development & Algorithm & Programming">
-  <meta property="og:title" content="Hongyi Ding | Portfolio">
-  <meta property="og:description" content="Portfolio">
+  <title>Hongyi Ding | CS &amp; Physics Portfolio</title>
+  <meta name="description" content="Hongyi Ding is a Computer Science and Physics student at Northeastern University building games, developer tools, and simulation projects.">
+  <meta property="og:title" content="Hongyi Ding | CS &amp; Physics Portfolio">
+  <meta property="og:description" content="Games, developer tools, and simulation projects by Hongyi Ding.">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://darkboyryan.github.io/HongyiDing.github.io/">
+  <meta property="og:image" content="https://darkboyryan.github.io/HongyiDing.github.io/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Hongyi Ding portfolio preview">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="assets/favicon.ico">
 </head>
 <body>
   <header class="container header">
-    <div>
+    <div class="identity">
       <h1>Hongyi Ding</h1>
-      <p class="subtitle">HongyiDing - Northeastern CS × Physics | Game development & Algorithm & Programming</p>
-      <nav class="links">
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="">Blog</a>
-        <a href="#contact">Contact</a>
+      <p class="subtitle" data-i18n="subtitle">Computer Science &times; Physics at Northeastern University &middot; Expected May 2027</p>
+      <nav class="links" aria-label="Primary navigation" data-i18n-aria-label="navAriaLabel">
+        <a href="#projects" data-i18n="navProjects">Projects</a>
+        <a href="#about" data-i18n="navAbout">About</a>
+        <a href="#contact" data-i18n="navContact">Contact</a>
+        <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch to Chinese" title="Switch to Chinese">中文</button>
       </nav>
     </div>
   </header>
 
   <main class="container">
     <section id="intro" class="hero">
-      <img src="./avatar.jpg" alt="avatar">
+      <img src="avatar.jpg" alt="Portrait of Hongyi Ding" data-i18n-alt="avatarAlt">
       <div>
-        <h2>Hi </h2>
-        <p>Focused on Game Programming, Algorithms, and Computer Systems. Open to opportunities across all related positions.</p>
+        <h2 data-i18n="heroTitle">Hi, I'm Hongyi.</h2>
+        <p data-i18n="heroBody">I build games, developer tools, and simulation projects, with a focus on game programming, algorithms, and computer systems.</p>
         <div class="cta">
-          <a class="btn" href="#projects">Check Project</a>
-          <a class="btn ghost" href="Resume.pdf"download="Resume.pdf">DownLoad Resume</a>
+          <a class="btn" href="#projects" data-i18n="viewProjects">View Projects</a>
+          <a class="btn ghost" href="Resume.pdf" download="Hongyi-Ding-Resume.pdf" data-i18n="downloadResume">Download Resume</a>
         </div>
       </div>
     </section>
 
     <section id="projects">
-      <h2>Project
+      <h2 data-i18n="projectsTitle">Projects</h2>
       <div class="grid">
         <article class="card">
-       
-          <h3>Bullet Hell Shooter</h3>
-          <p>Unity 2D</p>
-          <ul class="meta"><li>Unity/C#</li><li>Visualization</li><li>Self-developed</li></ul>
+          <h3 data-i18n="scratchTitle">Scratch Novel Engine</h3>
+          <p class="project-date" data-i18n="scratchDate">Jun 2026 - Present</p>
+          <ul class="meta">
+            <li>Electron</li>
+            <li>C++</li>
+            <li data-i18n="personalProject">Personal project</li>
+          </ul>
+          <p data-i18n="scratchBody">An in-progress visual novel engine with an Electron editor shell and C++ core. Its editor/runtime architecture and basic narrative flow are currently being developed.</p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="spireTitle">Slay the Spire 2 Mod</h3>
+          <p class="project-date" data-i18n="spireDate">May 2026 - Present</p>
+          <ul class="meta">
+            <li>Godot</li>
+            <li>BaseLib</li>
+            <li data-i18n="personalProject">Personal project</li>
+          </ul>
+          <p data-i18n="spireBody">Set up the mod development environment and completed card art replacement and text configuration. Now building a playable character with base settings, a starter deck, and exclusive cards.</p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="f1Title">F1 Vehicle Dynamics &amp; Aerodynamic Optimization</h3>
+          <p class="project-date" data-i18n="f1Date">Jan 2026 - Apr 2026</p>
+          <ul class="meta">
+            <li>Python</li>
+            <li>Matplotlib</li>
+            <li data-i18n="personalProject">Personal project</li>
+          </ul>
+          <p data-i18n="f1Body">Built longitudinal and lateral dynamics models to study drag, downforce, and tire grip; implemented simplified 2D CFD using the Navier-Stokes equations and FVM; then analyzed CL-CD trade-offs and optimized aero setups with a lap-time model.</p>
+        </article>
+
+        <article class="card">
+          <h3 data-i18n="muTitle">Mu's Adventure</h3>
+          <p class="project-date" data-i18n="muDate">Oct 2025 - Present</p>
+          <ul class="meta">
+            <li>Unity</li>
+            <li data-i18n="teamProject">Team project</li>
+          </ul>
+          <p data-i18n="muBody">A 2D side-scrolling platform game where players use scattered clues to solve puzzles. It includes multiple minigames and integrates broad worldbuilding with gameplay.</p>
           <div class="actions">
-            <a href="#" class="btn sm">Demo</a>
-            <a href="#" class="btn sm ghost">GitHub</a>
+            <a class="btn sm ghost" href="https://github.com/DarkboyRyan/mu-s-adventure" target="_blank" rel="noopener noreferrer" aria-label="View Mu's Adventure on GitHub" data-i18n-aria-label="muGithubLabel">GitHub</a>
           </div>
         </article>
 
         <article class="card">
-         
-          <h3>Minesweeper</h3>
-          <p>Java</p>
-          <ul class="meta"><li>Java</li><li>Visualization</li></ul>
+          <h3>Global Game Jam 2026</h3>
+          <p class="project-date" data-i18n="ggjDate">Feb 2026</p>
+          <ul class="meta">
+            <li>Unity</li>
+            <li>Git</li>
+            <li data-i18n="teamProject">Team project</li>
+          </ul>
+          <p data-i18n="ggjBody">Built a playable game in 48 hours around the theme “Mask.” Designed mask mechanics with state transitions and visual feedback while collaborating through Git in a fast-paced team.</p>
           <div class="actions">
-            <a href="#" class="btn sm">Readme</a>
-            <a href="#" class="btn sm ghost">GitHub</a>
-          </div>
-        </article>
-
-        <article class="card">
-        
-          <h3>FeedingFreezy(java)</h3>
-          <p>Java</p>
-          <ul class="meta"><li>Java</li><li>Game Project</li></ul>
-          <div class="actions">
-            <a href="#" class="btn sm ghost">GitHub</a>
+            <a class="btn sm ghost" href="https://github.com/DarkboyRyan/GGJ2026" target="_blank" rel="noopener noreferrer" aria-label="View Global Game Jam 2026 on GitHub" data-i18n-aria-label="ggjGithubLabel">GitHub</a>
           </div>
         </article>
       </div>
     </section>
 
     <section id="about">
-      <h2>About</h2>
-      <p>I am a junior at Northeastern University majoring in Computer Science and Physics. I am passionate about game development and software engineering, with strong programming skills and hands-on experience in building interactive projects.
-        I enjoy collaborating with others and value spending time with friends both in and outside of development work.</p>
+      <h2 data-i18n="aboutTitle">About</h2>
+      <p data-i18n="aboutBody">I am pursuing a bachelor's degree in Computer Science and Physics at Northeastern University in Boston and expect to graduate in May 2027. I enjoy game development and software engineering, working primarily with C++, Java, and Python.</p>
     </section>
 
     <section id="contact">
-      <h2>Contact</h2>
+      <h2 data-i18n="contactTitle">Contact</h2>
       <ul class="contact">
-        <li>dinghongyi8@gmail.com</a></li>
-        <li><a href="https://github.com/dashboard">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/feed/?trk=guest_homepage-basic_nav-header-signin">LinkedIn</a></li>
+        <li><a href="mailto:dinghongyi8@gmail.com">dinghongyi8@gmail.com</a></li>
+        <li><a href="https://github.com/DarkboyRyan/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/hongyi-ding-490456351/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
       </ul>
     </section>
   </main>
 
   <footer class="container footer">
-    <small>© <span id="year"></span> Hongyi Ding. Built with vanilla HTML/CSS.</small>
+    <small>&copy; <span id="year"></span> Hongyi Ding. <span data-i18n="footerText">Built with vanilla HTML/CSS.</span></small>
   </footer>
 
   <script src="script.js"></script>
