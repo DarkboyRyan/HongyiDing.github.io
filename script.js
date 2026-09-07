@@ -156,6 +156,12 @@ function detectBrowserLanguage() {
 function applyLanguage(language, persist = false) {
   const selectedLanguage = translations[language] ? language : "en";
   const copy = translations[selectedLanguage];
+  const resumeDownload = document.getElementById("resume-download");
+  if (resumeDownload) {
+    const resumeLanguage = selectedLanguage === "zh" ? "Cn" : "En";
+    resumeDownload.setAttribute("href", `Resume_${resumeLanguage}.pdf`);
+    resumeDownload.setAttribute("download", `Hongyi-Ding-Resume-${resumeLanguage}.pdf`);
+  }
 
   root.lang = selectedLanguage === "zh" ? "zh-CN" : "en";
   document.title = copy.documentTitle;
