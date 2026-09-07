@@ -1,5 +1,5 @@
 .companion {
-  --companion-accent: #343f69;
+  --companion-accent: var(--accent, #235bc0);
   position: fixed;
   z-index: 20;
   right: max(16px, env(safe-area-inset-right));
@@ -29,8 +29,8 @@
   padding: 8px 12px;
   border: 1px solid var(--border);
   border-radius: 999px;
-  background: var(--bg);
-  box-shadow: 0 3px 16px #0000000a;
+  background: var(--card);
+  box-shadow: 0 3px 16px #192b3a08;
 }
 .companion-toolbar button { min-width: 44px; }
 .companion-bubble {
@@ -38,9 +38,9 @@
   padding: 14px;
   border: 1px solid var(--border);
   border-radius: 16px 16px 4px 16px;
-  background: var(--bg);
+  background: var(--card);
   color: var(--fg);
-  box-shadow: 0 6px 24px #0000000a;
+  box-shadow: 0 8px 30px #192b3a0a;
   pointer-events: auto;
 }
 .companion-name { font-weight: 650; letter-spacing: .02em; }
@@ -120,13 +120,21 @@
   height: 7px;
   margin-right: 8px;
   border-radius: 50%;
-  background: #7583b3;
+  background: var(--accent);
 }
-:root.dark .companion { --companion-accent: #bbc6ee; }
+:root.dark .companion { --companion-accent: var(--accent); }
 @media (max-width: 640px), (max-height: 650px) {
   .companion { width: 200px; right: max(10px, env(safe-area-inset-right)); }
   .companion-stage { width: 200px; height: 220px; }
   .companion-bubble { padding: 10px 12px; }
   .companion-toolbar { margin-bottom: 4px; }
+}
+@media (max-width: 640px) {
+  .companion { width: min(370px, calc(100vw - 20px)); }
+  .companion-panel { display: grid; grid-template-columns: minmax(0, 1fr) 144px; column-gap: 8px; align-items: end; }
+  .companion-toolbar { grid-column: 2; grid-row: 1; }
+  .companion-bubble { grid-column: 1; grid-row: 2; margin-bottom: 14px; border-radius: 14px 14px 4px 14px; }
+  .companion-stage { grid-column: 2; grid-row: 2; width: 144px; height: 210px; }
+  .companion-credit { grid-column: 1 / -1; text-align: right; }
 }
 @media print { .companion { display: none; } }

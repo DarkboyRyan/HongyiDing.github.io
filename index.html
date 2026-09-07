@@ -15,41 +15,51 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Hongyi Ding portfolio preview">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="companion.css">
+  <link rel="stylesheet" href="styles.css?v=2fbec13d07">
+  <link rel="stylesheet" href="companion.css?v=464517b3a6">
 </head>
-<body>
+<body class="portfolio">
+  <a class="skip-link" href="#main" data-i18n="skipToContent">Skip to content</a>
   <header class="container header">
     <div class="identity">
-      <h1>Hongyi Ding</h1>
-      <p class="subtitle" data-i18n="subtitle">Computer Science &times; Physics at Northeastern University &middot; Expected May 2027</p>
+      <a class="brand" href="#intro">Hongyi Ding<span aria-hidden="true">.</span></a>
+    </div>
+    <div class="header-navigation">
       <nav class="links" aria-label="Primary navigation" data-i18n-aria-label="navAriaLabel">
         <a href="#projects" data-i18n="navProjects">Projects</a>
         <a href="#about" data-i18n="navAbout">About</a>
         <a href="#contact" data-i18n="navContact">Contact</a>
       </nav>
+      <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch to Chinese" title="Switch to Chinese">中/En</button>
     </div>
-    <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch to Chinese" title="Switch to Chinese">中/En</button>
   </header>
 
-  <main class="container">
+  <main class="container" id="main">
     <section id="intro" class="hero">
-      <img src="avatar.jpg" alt="Portrait of Hongyi Ding" data-i18n-alt="avatarAlt">
-      <div>
-        <h2 data-i18n="heroTitle">Hi, I'm Hongyi.</h2>
+      <div class="hero-copy">
+        <p class="eyebrow" data-i18n="heroDiscipline">Computer science × Physics</p>
+        <h1 data-i18n="heroTitle">为了防止世界被破坏&#10;为了守护世界的和平</h1>
         <p data-i18n="heroBody">I build games, developer tools, and simulation projects, with a focus on game programming, algorithms, and computer systems.</p>
         <div class="cta">
           <a class="btn" href="#projects" data-i18n="viewProjects">View Projects</a>
           <a class="btn ghost" href="Resume.pdf" download="Hongyi-Ding-Resume.pdf" data-i18n="downloadResume">Download Resume</a>
         </div>
       </div>
+      <div class="hero-profile">
+        <img src="avatar.jpg" width="104" height="104" alt="Portrait of Hongyi Ding" data-i18n-alt="avatarAlt">
+        <p class="profile-name" data-i18n="profileName">Hi, I'm Hongyi.</p>
+        <p class="subtitle" data-i18n="subtitle">Computer Science &times; Physics at Northeastern University &middot; Expected May 2027</p>
+      </div>
     </section>
 
     <section id="projects">
-      <h2 data-i18n="projectsTitle">Projects</h2>
+      <div class="section-heading">
+        <h2 data-i18n="projectsTitle">Selected projects</h2>
+        <span class="section-note" data-i18n="projectFocus">Games / Tools / Simulation</span>
+      </div>
       <div class="grid">
-        <article class="card">
-          <h3 data-i18n="scratchTitle">Scratch Novel Engine</h3>
+        <article class="card card-featured is-selected">
+          <h3><button class="project-select" type="button" aria-pressed="true" data-i18n="scratchTitle">Scratch Novel Engine</button></h3>
           <p class="project-date" data-i18n="scratchDate">Jun 2026 - Present</p>
           <ul class="meta">
             <li>Electron</li>
@@ -60,7 +70,7 @@
         </article>
 
         <article class="card">
-          <h3 data-i18n="spireTitle">Slay the Spire 2 Mod</h3>
+          <h3><button class="project-select" type="button" aria-pressed="false" data-i18n="spireTitle">Slay the Spire 2 Mod</button></h3>
           <p class="project-date" data-i18n="spireDate">May 2026 - Present</p>
           <ul class="meta">
             <li>Godot</li>
@@ -71,7 +81,7 @@
         </article>
 
         <article class="card">
-          <h3 data-i18n="f1Title">F1 Vehicle Dynamics &amp; Aerodynamic Optimization</h3>
+          <h3><button class="project-select" type="button" aria-pressed="false" data-i18n="f1Title">F1 Vehicle Dynamics &amp; Aerodynamic Optimization</button></h3>
           <p class="project-date" data-i18n="f1Date">Jan 2026 - Apr 2026</p>
           <ul class="meta">
             <li>Python</li>
@@ -82,7 +92,7 @@
         </article>
 
         <article class="card">
-          <h3 data-i18n="muTitle">Mu's Adventure</h3>
+          <h3><button class="project-select" type="button" aria-pressed="false" data-i18n="muTitle">Mu's Adventure</button></h3>
           <p class="project-date" data-i18n="muDate">Oct 2025 - Present</p>
           <ul class="meta">
             <li>Unity</li>
@@ -95,7 +105,7 @@
         </article>
 
         <article class="card">
-          <h3>Global Game Jam 2026</h3>
+          <h3><button class="project-select" type="button" aria-pressed="false">Global Game Jam 2026</button></h3>
           <p class="project-date" data-i18n="ggjDate">Feb 2026</p>
           <ul class="meta">
             <li>Unity</li>
@@ -110,6 +120,7 @@
       </div>
     </section>
 
+    <div class="details-grid">
     <section id="about">
       <h2 data-i18n="aboutTitle">About</h2>
       <p data-i18n="aboutBody">I am pursuing a bachelor's degree in Computer Science and Physics at Northeastern University in Boston and expect to graduate in May 2027. I enjoy game development and software engineering, working primarily with C++, Java, and Python.</p>
@@ -123,13 +134,14 @@
         <li><a href="https://www.linkedin.com/in/hongyi-ding-490456351/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
       </ul>
     </section>
+    </div>
   </main>
 
   <footer class="container footer">
     <small>&copy; <span id="year"></span> Hongyi Ding. <span data-i18n="footerText">Built with vanilla HTML/CSS.</span></small>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=451d12c74a"></script>
   <script src="companion-config.js"></script>
   <script src="companion.js" defer></script>
 </body>

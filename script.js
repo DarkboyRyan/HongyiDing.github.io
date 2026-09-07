@@ -2,6 +2,17 @@
 
 const LANGUAGE_STORAGE_KEY = "hongyi-portfolio-language";
 
+const projectCards = [...document.querySelectorAll("#projects .card")];
+projectCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    projectCards.forEach((project) => {
+      const selected = project === card;
+      project.classList.toggle("is-selected", selected);
+      project.querySelector(".project-select").setAttribute("aria-pressed", String(selected));
+    });
+  });
+});
+
 const translations = {
   en: {
     documentTitle: "Hongyi Ding | CS & Physics Portfolio",
@@ -15,11 +26,15 @@ const translations = {
     navAbout: "About",
     navContact: "Contact",
     avatarAlt: "Portrait of Hongyi Ding",
-    heroTitle: "Hi, I'm Hongyi.",
+    skipToContent: "Skip to content",
+    heroDiscipline: "Computer science × Physics",
+    profileName: "Hi, I'm Hongyi.",
+    heroTitle: "To protect the world from devastation,\nto safeguard the peace of the world.",
     heroBody: "I build games, developer tools, and simulation projects, with a focus on game programming, algorithms, and computer systems.",
     viewProjects: "View Projects",
     downloadResume: "Download Resume",
-    projectsTitle: "Projects",
+    projectsTitle: "Selected projects",
+    projectFocus: "Games / Tools / Simulation",
     personalProject: "Personal project",
     teamProject: "Team project",
     scratchTitle: "Scratch Novel Engine",
@@ -58,11 +73,15 @@ const translations = {
     navAbout: "关于我",
     navContact: "联系方式",
     avatarAlt: "丁泓邑的头像",
-    heroTitle: "你好，我是丁泓邑。",
+    skipToContent: "跳转到正文",
+    heroDiscipline: "计算机科学 × 物理",
+    profileName: "你好，我是丁泓邑。",
+    heroTitle: "为了防止世界被破坏\n为了守护世界的和平",
     heroBody: "我专注于游戏编程、算法和计算机系统，并持续开发游戏、开发工具与仿真项目。",
     viewProjects: "查看项目",
     downloadResume: "下载简历",
-    projectsTitle: "项目经历",
+    projectsTitle: "项目精选",
+    projectFocus: "游戏 / 工具 / 仿真",
     personalProject: "个人项目",
     teamProject: "团队项目",
     scratchTitle: "文字小说引擎（Scratch Novel Engine）",
