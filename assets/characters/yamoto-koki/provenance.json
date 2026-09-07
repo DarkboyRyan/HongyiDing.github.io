@@ -1,0 +1,19 @@
+{
+  "character": "Yamoto Koki / 矢本小季 / ヤモト・コキ",
+  "source": "Ninja Slayer anime screenshot supplied by the user",
+  "type": "Unofficial AI-assisted fan illustration; not a Live2D rig",
+  "tool": "Built-in image_gen",
+  "generationPrompt": "Use case: stylized-concept. Asset type: full-body anime character standing illustration for a personal website companion, also a visual target for later Live2D rigging. Reference image: the provided screenshot is the exact character identity, costume, hair and anime visual style reference. Depict Yamoto Koki (矢本小季 / ヤモト・コキ) from Ninja Slayer, specifically the gentle schoolgirl appearance in the supplied screenshot. Preserve her recognizable short chin-to-neck length charcoal-black bob, long irregular pointed bangs with a central lock between the eyes, large dark blue eyes, pale skin, small gentle closed smile. Faithfully reproduce her dark navy hooded duffle coat with four pale loops and tan horn toggle fasteners down the center, brown backpack/sword shoulder straps, dark charcoal pleated skirt, dark gray mid-calf socks and dark brown loafers. White wrapped katana handle in a white square guard visible over her shoulder, as in the reference; blade stays sheathed. Front-facing eye-level full-body standing pose, both feet planted, arms relaxed slightly apart from body for later part separation, hands naturally open with fingers together. Natural anime proportions, modest clothing, not chibi, not mature pinup. Crisp hand-drawn anime outlines, simple clean cel shading, restrained highlights, exactly the reference colors. Portrait composition 1024 x 1536, whole character including sword handle and shoes fits with 6% transparent margin, character centered and fills height. TRUE TRANSPARENT alpha background, no checkerboard painted into image, no scenery, no text, labels, watermark, ground shadow or frame. This is one cohesive finished standing character, not an atlas, collage or model sheet. Keep the identity and outfit extremely close to the screenshot; change only the camera perspective and pose to a front standing view.",
+  "extractionPrompt": "Remove the checkerboard background to genuine RGBA alpha; preserve character, costume, pose and dimensions.",
+  "files": {
+    "final": "standing.png",
+    "originalGenerated": "exec-2b57a909-53e8-431a-9db6-0f22ead05a79.png",
+    "alphaExtracted": "exec-4b1b8c4f-eabd-4052-914d-70bd266200c4.png"
+  },
+  "status": "User approved use of a portrait interaction version pending a custom Live2D model.",
+  "rights": "Underlying character rights belong to their respective owners; this is not official or endorsed artwork.",
+  "dimensions": [
+    1024,
+    1536
+  ]
+}

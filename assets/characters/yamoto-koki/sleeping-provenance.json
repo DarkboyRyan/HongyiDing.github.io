@@ -1,0 +1,14 @@
+{
+  "tool": "Built-in image_gen",
+  "source": "standing.png",
+  "output": "sleeping-eyes.png",
+  "purpose": "Closed-eye resting expression for the website companion",
+  "prompt": "Use case: precise-object-edit. EDIT TARGET: the supplied RGBA full-body Yamoto Koki standing illustration used as an animation frame in a website. Create ONE closed-eye resting expression variant. Change ONLY the two eyes: replace each open blue anime eye with a softly closed eyelid and delicate dark lash line, calm sleepy expression, preserve the tiny original smile. STRICT FRAME LOCK: keep the exact 1024 x 1536 canvas, the exact character size, silhouette, placement, head position, hair, eyebrows, nose, mouth, clothes, hands, sword and feet. Do not zoom, translate, rotate, resize or redraw the body. Do not add sleep symbols or text. Preserve the existing real transparent ALPHA background exactly; output RGBA PNG with full transparency outside character, not black background, not checkerboard. All pixels outside the small eye regions should remain unchanged. This must switch seamlessly with the original open-eye frame without any whole-character shift.",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "format": "RGB PNG",
+  "rendering": "Only a clipped eye-region overlay is used. Original standing.png supplies the body and transparent silhouette; the generated background is excluded.",
+  "rights": "Unofficial fan art of Yamoto Koki from Ninja Slayer. Underlying character rights remain with their owners."
+}

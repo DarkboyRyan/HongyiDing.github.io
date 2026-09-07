@@ -1,0 +1,132 @@
+.companion {
+  --companion-accent: #343f69;
+  position: fixed;
+  z-index: 20;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(12px, env(safe-area-inset-bottom));
+  width: 230px;
+  pointer-events: none;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.companion [hidden] { display: none !important; }
+.companion button, .companion a { pointer-events: auto; }
+.companion button {
+  color: var(--fg);
+  font: inherit;
+  cursor: pointer;
+}
+.companion-panel { position: relative; }
+.companion-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.companion-toolbar button, .companion-launcher {
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  box-shadow: 0 3px 16px #0000000a;
+}
+.companion-toolbar button { min-width: 44px; }
+.companion-bubble {
+  position: relative;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 16px 16px 4px 16px;
+  background: var(--bg);
+  color: var(--fg);
+  box-shadow: 0 6px 24px #0000000a;
+  pointer-events: auto;
+}
+.companion-name { font-weight: 650; letter-spacing: .02em; }
+.companion-message { margin: 6px 0 10px; }
+.companion-actions { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+.companion-actions a, .companion-actions button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--companion-accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.companion-stage {
+  display: block;
+  width: 230px;
+  height: 300px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  touch-action: manipulation;
+}
+.companion-stage:disabled { cursor: default; pointer-events: none; }
+.companion-stage canvas { display: block; width: 100%; height: 100%; }
+.companion-sprite { display: block; width: 100%; height: 100%; }
+.companion-figure {
+  position: relative;
+  display: block;
+  height: 100%;
+  aspect-ratio: 2 / 3;
+  margin: 0 auto;
+  transform-origin: 50% 95%;
+  animation: companion-sway 4s ease-in-out infinite;
+  animation-play-state: paused;
+}
+.companion-portrait, .companion-sleep-eyes {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.companion-sleep-eyes {
+  /* Use only the generated eye region; the original pose and alpha stay untouched. */
+  clip-path: inset(10.9% 40.8% 84.2% 43.3%);
+  pointer-events: none;
+}
+.companion[data-animated="true"] .companion-figure { animation-play-state: running; }
+.companion[data-resting="true"] .companion-figure { animation-name: companion-rest; animation-duration: 6s; }
+.companion[data-animated="true"] .companion-sprite[data-greeting] { animation: companion-greeting .6s ease-out; }
+@keyframes companion-sway {
+  0%, 100% { transform: rotate(-1.8deg) translateX(-3px); }
+  50% { transform: rotate(1.8deg) translateX(3px) translateY(-2px); }
+}
+@keyframes companion-rest {
+  0%, 100% { transform: rotate(-.4deg) translateY(0); }
+  50% { transform: rotate(.4deg) translateY(-1px); }
+}
+@keyframes companion-greeting {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  70% { transform: translateY(-2px); }
+}
+.companion-credit { text-align: center; }
+.companion-credit a { color: var(--muted); font-size: 12px; text-decoration: none; }
+.companion-launcher { display: block; margin-left: auto; }
+.companion-launcher::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #7583b3;
+}
+:root.dark .companion { --companion-accent: #bbc6ee; }
+@media (max-width: 640px), (max-height: 650px) {
+  .companion { width: 200px; right: max(10px, env(safe-area-inset-right)); }
+  .companion-stage { width: 200px; height: 220px; }
+  .companion-bubble { padding: 10px 12px; }
+  .companion-toolbar { margin-bottom: 4px; }
+}
+@media print { .companion { display: none; } }
