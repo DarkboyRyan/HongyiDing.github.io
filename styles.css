@@ -60,15 +60,10 @@ h3 { margin: 0; font: 600 21px/1.4 var(--display); letter-spacing: -.4px; }
 .section-note { color: var(--muted); font-size: 13px; }
 .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .card { display: flex; flex-direction: column; min-width: 0; padding: 28px; border: 1px solid var(--border); border-radius: 16px; background: var(--card); }
-.card-featured { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 48px; padding: 30px 28px; }
 #projects .card { cursor: pointer; transition: background-color .2s, border-color .2s, box-shadow .2s; }
 #projects .card:hover { border-color: var(--accent); }
 #projects .card.is-selected { background: var(--accent-soft); border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
 .project-select { display: block; width: 100%; padding: 0; border: 0; background: none; color: inherit; font: inherit; letter-spacing: inherit; text-align: start; cursor: pointer; border-radius: 4px; }
-.card-featured h3 { grid-column: 1; grid-row: 1; font-size: 26px; }
-.card-featured .project-date { grid-column: 1; grid-row: 2; }
-.card-featured .meta { grid-column: 1; grid-row: 3; margin-bottom: 0; }
-.card.card-featured > p:last-child { grid-column: 2; grid-row: 1 / 4; align-self: center; margin: 0; }
 .project-date { margin: 10px 0 18px; font: 12px/1.7 var(--utility); color: var(--muted); }
 .meta { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0 0 18px; list-style: none; }
 .meta li { padding: 3px 9px; border-radius: 5px; background: var(--bg); color: var(--muted); font-size: 12px; }
@@ -97,7 +92,6 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
   .hero h1 { font-size: 42px; letter-spacing: -1.8px; }
   .hero-profile { padding-left: 22px; }
   .card { padding: 22px; }
-  .card-featured { column-gap: 24px; }
   .details-grid { gap: 36px; }
 }
 @media (max-width: 640px) {
@@ -119,9 +113,6 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outlin
   .section-note { font-size: 12px; }
   h2 { font-size: 23px; }
   .grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
-  .card-featured { display: flex; }
-  .card-featured .meta { margin-bottom: 18px; }
-  .card-featured h3 { font-size: 23px; }
   .details-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; margin-top: 44px; padding-top: 28px; }
   .footer { margin-top: 38px; padding-bottom: 80px; }
 }
