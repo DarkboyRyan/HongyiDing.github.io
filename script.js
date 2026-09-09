@@ -29,7 +29,7 @@ const translations = {
     skipToContent: "Skip to content",
     heroDiscipline: "Computer science × Physics",
     profileName: "Hi, I'm Hongyi.",
-    heroTitle: "To protect the world from devastation,\nto safeguard the peace of the world.",
+    heroTitle: "To protect the world from devastation!\nTo unite all peoples within our nation!",
     heroBody: "I build games, developer tools, and simulation projects, with a focus on game programming, algorithms, and computer systems.",
     viewProjects: "View Projects",
     downloadResume: "Download Resume",
