@@ -15,18 +15,19 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Hongyi Ding portfolio preview">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="styles.css?v=46602f80f2">
+  <link rel="stylesheet" href="styles.css?v=73b7e3c64a">
   <link rel="stylesheet" href="companion.css?v=464517b3a6">
 </head>
 <body class="portfolio">
   <a class="skip-link" href="#main" data-i18n="skipToContent">Skip to content</a>
   <header class="container header">
     <div class="identity">
-      <a class="brand" href="#intro">Hongyi Ding<span aria-hidden="true">.</span></a>
+      <a class="brand" href="#intro">Hongyi Ding</a>
     </div>
     <div class="header-navigation">
       <nav class="links" aria-label="Primary navigation" data-i18n-aria-label="navAriaLabel">
         <a href="#projects" data-i18n="navProjects">Projects</a>
+        <a href="#recent" data-i18n="navRecent">Lately</a>
         <a href="#about" data-i18n="navAbout">About</a>
         <a href="#contact" data-i18n="navContact">Contact</a>
       </nav>
@@ -140,10 +141,61 @@
       </div>
     </section>
 
+    <section id="recent" class="recent" aria-labelledby="recent-title">
+      <div class="section-heading">
+        <h2 id="recent-title" data-i18n="recentTitle">Lately</h2>
+      </div>
+      <div class="recent-grid">
+        <article class="recent-card" aria-labelledby="recent-games-title">
+          <div class="recent-category">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 7h9a4 4 0 0 1 3.9 3.1l1.1 6a2.5 2.5 0 0 1-4.2 2.2L15 16H9l-2.3 2.3a2.5 2.5 0 0 1-4.2-2.2l1.1-6A4 4 0 0 1 7.5 7Z"/><path d="M7 10v4m-2-2h4m6-1h.01M18 13h.01"/></svg>
+            <h3 id="recent-games-title" data-i18n="recentGames">Recently playing</h3>
+          </div>
+          <ul class="recent-list">
+            <li>
+              <a class="recent-artwork" href="https://ryu-ga-gotoku.com/zero-directorscut/asia_en/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/recent/yakuza-0-directors-cut.png" width="1200" height="640" loading="lazy" decoding="async" alt="如龙0导演剪辑版" data-i18n-alt="recentGamesAlt">
+              </a>
+              <strong data-i18n="recentGameName">如龙0导演剪辑版</strong>
+            </li>
+          </ul>
+        </article>
+        <article class="recent-card" aria-labelledby="recent-anime-title">
+          <div class="recent-category">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="14" rx="3"/><path d="m8 3 4 4 4-4m-6 8 5 3-5 3Z"/></svg>
+            <h3 id="recent-anime-title" data-i18n="recentAnime">Recently watching</h3>
+          </div>
+          <ul class="recent-list">
+            <li>
+              <a class="recent-artwork" href="https://www.madoka-magica.com/wr/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/recent/madoka-walpurgisnacht.webp" width="1800" height="2546" loading="lazy" decoding="async" alt="魔法少女小圆 魔女的回天" data-i18n-alt="recentAnimeAlt">
+              </a>
+              <strong data-i18n="recentAnimeName">魔法少女小圆 魔女的回天</strong>
+            </li>
+          </ul>
+        </article>
+        <article class="recent-card" aria-labelledby="recent-music-title">
+          <div class="recent-category">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 17V5l11-2v12M9 9l11-2"/><ellipse cx="6" cy="18" rx="3" ry="3"/><ellipse cx="17" cy="16" rx="3" ry="3"/></svg>
+            <h3 id="recent-music-title" data-i18n="recentMusic">Recently listening</h3>
+          </div>
+          <ul class="recent-list">
+            <li>
+              <a class="recent-artwork" href="https://sakanaction.jp/news/detail/2959" target="_blank" rel="noopener noreferrer">
+                <img src="assets/recent/kaiju.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt="怪兽" data-i18n-alt="recentMusicAlt">
+              </a>
+              <strong data-i18n="recentMusicName">怪兽</strong>
+              <p>sakanaction</p>
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
     <div class="details-grid">
     <section id="about">
       <h2 data-i18n="aboutTitle">About</h2>
-      <p data-i18n="aboutBody">I am pursuing a bachelor's degree in Computer Science and Physics at Northeastern University in Boston and expect to graduate in May 2027. I enjoy game development and software engineering, working primarily with C++, Java, and Python.</p>
+      <p data-i18n="aboutBody">I am pursuing a bachelor's degree in Computer Science and Physics at Northeastern University in Boston and expect to graduate in May 2027. I focus on game development and software engineering, working primarily with C++, C#, and Python. I love games and anime—feel free to get in touch!</p>
     </section>
 
     <section id="contact">
@@ -161,7 +213,7 @@
     <small>&copy; <span id="year"></span> Hongyi Ding. <span data-i18n="footerText">Built with vanilla HTML/CSS.</span></small>
   </footer>
 
-  <script src="script.js?v=5a465ae609"></script>
+  <script src="script.js?v=9cb6bea57b"></script>
   <script src="companion-config.js"></script>
   <script src="companion.js" defer></script>
 </body>
