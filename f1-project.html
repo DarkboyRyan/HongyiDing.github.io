@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>F1 Vehicle Dynamics | Hongyi Ding</title>
+<meta name="description" content="Original course-project figures exploring cornering limits and the drag–downforce trade-off in a simplified F1 model.">
+<meta property="og:title" content="F1 Vehicle Dynamics | Hongyi Ding">
+<meta property="og:description" content="Original course-project figures exploring cornering limits and the drag–downforce trade-off in a simplified F1 model.">
+<meta property="og:locale" content="en_US">
+<link rel="stylesheet" href="styles.css?v=73b7e3c64a">
+<link rel="stylesheet" href="f1-project.css?v=d1af68f70c">
+<link rel="stylesheet" href="music-player.css?v=20261021-local-audio">
+</head>
+<body class="research-page">
+<a class="skip-link" href="#main" data-i18n="skipToContent">Skip to content</a>
+<header class="container header">
+<a class="brand" href="index.html">Hongyi Ding</a>
+<div class="header-navigation">
+<a class="back-link" href="index.html#projects" data-i18n="f1Back">← All projects</a>
+<button class="language-toggle" id="language-toggle" type="button" aria-label="Switch to Chinese">中/En</button>
+</div>
+</header>
+<main class="container" id="main">
+<section class="research-hero">
+<p class="eyebrow" data-i18n="f1Course">PHYS3211 · Final project · March 2026</p>
+<p class="research-name" data-i18n="f1FullName">F1 Vehicle Dynamics</p>
+<h1 data-i18n="f1PageTitle">Downforce, grip, and cornering.</h1>
+<p class="research-lead" data-i18n="f1Lead">For my PHYS3211 final project, I explored how downforce and tire grip affect cornering performance in a simplified vehicle model. The figures show the cornering limits and the trade-off between straight-line speed and cornering speed.</p>
+<ul class="meta">
+<li>Python</li>
+<li>NumPy</li>
+<li>Matplotlib</li>
+</ul>
+<div class="cta">
+<a class="btn" href="#cornering" data-i18n="f1Explore">Explore the results ↓</a>
+</div>
+</section>
+<p class="figure-hint" data-i18n="f1ZoomHint">Select a figure to enlarge it; chart labels are in English.</p>
+<section class="research-section" id="cornering">
+<div class="research-copy">
+<p class="eyebrow" data-i18n="f1NavLat">Cornering performance</p>
+<h2 data-i18n="f1LatTitle">How downforce and grip affect cornering</h2>
+<p data-i18n="f1LatBody">The cornering model compares the centripetal force needed to follow a bend with the lateral force available from the tires. Downforce adds to the normal load, raising the grip limit under the assumed constant friction coefficient.</p>
+<div class="research-finding">
+<p data-i18n="f1LatFinding">For an 80 m corner, increasing either downforce or tire friction raises the predicted grip-limited speed. This is a force-balance limit; it does not simulate corner entry, braking, or the power needed to sustain that speed.</p>
+</div>
+</div>
+<div class="research-plots">
+<figure class="research-figure">
+<a class="figure-zoom" href="assets/f1/downforce.png" target="_blank" rel="noopener">
+<img src="assets/f1/downforce.png" width="1054" height="714" alt="Grip-limited cornering speed as CL increases, with tire friction fixed at μ = 1.8 and corner radius at 80 m." data-i18n-alt="f1DownCaption" loading="lazy" decoding="async">
+</a>
+<figcaption data-i18n="f1DownCaption">Grip-limited cornering speed as CL increases, with tire friction fixed at μ = 1.8 and corner radius at 80 m.</figcaption>
+</figure>
+<figure class="research-figure">
+<a class="figure-zoom" href="assets/f1/grip.png" target="_blank" rel="noopener">
+<img src="assets/f1/grip.png" width="1054" height="714" alt="Grip-limited cornering speed as tire friction increases, with downforce fixed at CL = 3.0 and corner radius at 80 m." data-i18n-alt="f1GripCaption" loading="lazy" decoding="async">
+</a>
+<figcaption data-i18n="f1GripCaption">Grip-limited cornering speed as tire friction increases, with downforce fixed at CL = 3.0 and corner radius at 80 m.</figcaption>
+</figure>
+</div>
+</section>
+<section class="research-section" id="tradeoff">
+<div class="research-copy">
+<p class="eyebrow" data-i18n="f1NavTrade">Performance trade-off</p>
+<h2 data-i18n="f1TradeTitle">Straight-line speed and cornering speed</h2>
+<p data-i18n="f1TradeBody">I assumed CD = 0.40 + 0.25 CL to compare the two effects of increasing downforce: a higher grip-limited cornering speed and a lower power-limited straight-line top speed. The curves show predictions from the simplified model, using 88% drivetrain efficiency and no rolling resistance.</p>
+<div class="research-finding">
+<p data-i18n="f1TradeFinding">The original figure labels CL = 4.00 as “Optimal”. This refers only to the lowest sampled value of the simplified lap-time proxy over CL = 0.5–4.0. It lies at the scan boundary and does not establish a global optimum. The two speed curves alone do not define an optimal setting.</p>
+</div>
+</div>
+<div class="research-plots">
+<figure class="research-figure">
+<a class="figure-zoom" href="assets/f1/tradeoff.png" target="_blank" rel="noopener">
+<img src="assets/f1/tradeoff.png" width="823" height="596" alt="Original notebook figure. The dotted line marks the best sampled CL for the simplified lap-time proxy, at the upper boundary of the scan." data-i18n-alt="f1TradeCaption" loading="lazy" decoding="async">
+</a>
+<figcaption data-i18n="f1TradeCaption">Original notebook figure. The dotted line marks the best sampled CL for the simplified lap-time proxy, at the upper boundary of the scan.</figcaption>
+</figure>
+<figure class="research-figure" id="drag-relationship">
+<a class="figure-zoom" href="assets/f1/drag-penalty.png" target="_blank" rel="noopener">
+<img src="assets/f1/drag-penalty.png" width="813" height="596" alt="Original notebook figure showing the assumed relationship CD = 0.40 + 0.25 CL. The “Optimum” marker refers only to the best sampled CL for the simplified lap-time proxy, at the upper boundary of the scan; it does not establish a global optimum." data-i18n-alt="f1DragCaption" loading="lazy" decoding="async">
+</a>
+<figcaption data-i18n="f1DragCaption">Original notebook figure showing the assumed relationship CD = 0.40 + 0.25 CL. The “Optimum” marker refers only to the best sampled CL for the simplified lap-time proxy, at the upper boundary of the scan; it does not establish a global optimum.</figcaption>
+</figure>
+</div>
+</section>
+<section class="research-section" id="airflow">
+<div class="research-copy">
+<p class="eyebrow" data-i18n="f1NavFlow">2D flow prototype</p>
+<h2 data-i18n="f1FlowTitle">Exploring a simple flow field</h2>
+<p data-i18n="f1FlowBody">Alongside the vehicle models, I built a separate 2D flow prototype on a staggered grid, using a pressure-projection step and Numba-accelerated calculations. Three aligned rectangles represent simplified vehicle components. The saved output visualizes the computed velocity field around them.</p>
+<dl class="simulation-facts">
+<div><dt data-i18n="f1Grid">Grid</dt><dd>180 × 80</dd></div>
+<div><dt data-i18n="f1Domain">Domain</dt><dd>9 × 4 m</dd></div>
+<div><dt data-i18n="f1Steps">Time steps</dt><dd>3,000</dd></div>
+</dl>
+<div class="research-finding">
+<p data-i18n="f1FlowLimit">Boundary treatment, mass conservation, and mesh convergence have not yet been verified. At an inlet speed of 1 m/s and kinematic viscosity of 0.004 m²/s, the Reynolds number based on the 2 m body is about 500. This is an unvalidated prototype illustration, not a real-car aerodynamic prediction. It supplies no drag or downforce coefficients to the vehicle models above.</p>
+</div>
+</div>
+<div class="research-plots">
+<figure class="research-figure">
+<a class="figure-zoom" href="assets/f1/flow-field.png" target="_blank" rel="noopener">
+<img src="assets/f1/flow-field.png" width="932" height="468" alt="Original notebook output from the unvalidated 2D flow prototype. Cyan outlines mark the rectangular obstacles." data-i18n-alt="f1FlowCaption" loading="lazy" decoding="async">
+</a>
+<figcaption data-i18n="f1FlowCaption">Original notebook output from the unvalidated 2D flow prototype. Cyan outlines mark the rectangular obstacles.</figcaption>
+</figure>
+</div>
+</section>
+<section class="research-source">
+<h2 data-i18n="f1ScopeTitle">How to read these results</h2>
+<p data-i18n="f1ScopeBody">These figures use simplified steady-state models. The cornering estimates assume a constant tire friction coefficient, and the trade-off model prescribes a linear drag–downforce relationship. They do not model acceleration, braking, tire load sensitivity, or combined longitudinal and lateral tire forces. The results describe trends within these assumptions, rather than calibrated predictions for a real F1 car.</p>
+</section>
+</main>
+<footer class="container footer">
+<small>© <span id="year">
+</span> Hongyi Ding.</small>
+<a href="index.html#projects" data-i18n="f1Back">← All projects</a>
+</footer>
+<dialog class="figure-dialog" aria-label="Figure" aria-labelledby="figure-caption">
+<button type="button" class="btn ghost" id="close-figure" data-i18n="f1Close">Close figure</button>
+<img id="figure-expanded" alt="">
+<p id="figure-caption">
+</p>
+</dialog>
+<div class="site-music">
+  <button class="music-toggle" type="button" aria-expanded="false" aria-controls="music-panel" aria-label="Music player: 834.194 by sakanaction" data-i18n-aria-label="musicPlayerLabel">
+    <span class="site-music-icon" aria-hidden="true">♫</span>
+    <span><span class="site-music-label">834.194</span> <span class="site-music-artist">sakanaction</span></span>
+  </button>
+  <section id="music-panel" class="music-panel" aria-label="Music player: 834.194 by sakanaction" data-i18n-aria-label="musicPlayerLabel">
+    <h2 data-i18n="musicTitle">Music for browsing</h2>
+    <p data-i18n="musicHint">Music starts automatically when allowed. If it stays silent, press play below. You can close this panel while listening.</p>
+    <audio class="music-audio" src="assets/music/834194.mp3" controls loop preload="metadata" aria-label="834.194 by sakanaction"></audio>
+    <p class="music-availability" data-i18n="musicAvailability">834.194 · sakanaction · Full track · Loop enabled</p>
+  </section>
+</div>
+<script src="f1-content.js?v=1be486a26d">
+</script>
+<script src="script.js?v=20261021-local-audio">
+</script>
+<script src="f1-project.js?v=5b049b1aac">
+</script>
+<script src="music-player.js?v=20261021-local-audio" defer></script>
+</body>
+</html>

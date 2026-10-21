@@ -21,6 +21,10 @@ const translations = {
     ogDescription: "Games, developer tools, and simulation projects by Hongyi Ding.",
     ogLocale: "en_US",
     navAriaLabel: "Primary navigation",
+    musicPlayerLabel: "Music player: 834.194 by sakanaction",
+    musicTitle: "Music for browsing",
+    musicHint: "Music starts automatically when allowed. If it stays silent, press play below. You can close this panel while listening.",
+    musicAvailability: "834.194 · sakanaction · Full track · Loop enabled",
     subtitle: "Computer Science × Physics at Northeastern University · Expected May 2027",
     navProjects: "Projects",
     navRecent: "Lately",
@@ -57,13 +61,14 @@ const translations = {
     doorBody: "A visual novel I created with my own Scratch Novel Engine, bringing the engine into a narrative game. Visit the itch.io page to explore the game.",
     doorLink: "View on itch.io",
     doorLinkLabel: "View The Door at Seven on itch.io",
-    spireTitle: "Slay the Spire 2 Mod",
+    spireTitle: "Slay the Spire 2 Mod - OTTO",
     spireLink: "View on Steam Workshop",
-    spireLinkLabel: "View Slay the Spire 2 Mod on Steam Workshop",
-    spireDate: "May 2026 - Present",
+    spireLinkLabel: "View Slay the Spire 2 Mod - OTTO on Steam Workshop",
+    spireDate: "May 2026 - Oct 2026",
     spireBody: "Set up the mod development environment and completed card art replacement and text configuration. Now building a playable character with base settings, a starter deck, and exclusive cards.",
     f1Title: "F1 Vehicle Dynamics & Aerodynamic Optimization",
     f1Date: "Jan 2026 - Apr 2026",
+    f1Results: "View research results",
     f1Body: "Built longitudinal and lateral dynamics models to study drag, downforce, and tire grip; implemented simplified 2D CFD using the Navier-Stokes equations and FVM; then analyzed CL-CD trade-offs and optimized aero setups with a lap-time model.",
     muTitle: "Mu's Adventure",
     muDate: "Oct 2025 - Present",
@@ -87,6 +92,10 @@ const translations = {
     ogDescription: "丁泓邑的游戏、开发工具与仿真项目。",
     ogLocale: "zh_CN",
     navAriaLabel: "主要导航",
+    musicPlayerLabel: "音乐播放器：sakanaction《834.194》",
+    musicTitle: "浏览时听首歌",
+    musicHint: "浏览器允许时将自动播放；如果没有声音，请点击下方播放按钮。聆听时可以收起面板。",
+    musicAvailability: "834.194 · sakanaction · 完整歌曲 · 循环播放",
     subtitle: "东北大学计算机科学 × 物理 · 预计 2027 年 5 月毕业",
     navProjects: "项目",
     navRecent: "最近一览",
@@ -123,13 +132,14 @@ const translations = {
     doorBody: "使用自主开发的 Scratch Novel Engine 制作的文字小说游戏，将引擎用于实际的叙事作品。可前往 itch.io 页面查看游戏。",
     doorLink: "前往 itch.io",
     doorLinkLabel: "在 itch.io 查看 The Door at Seven",
-    spireTitle: "杀戮尖塔 2 Mod 开发",
+    spireTitle: "杀戮尖塔 2 Mod 开发 - OTTO",
     spireLink: "查看 Steam 创意工坊",
-    spireLinkLabel: "在 Steam 创意工坊查看杀戮尖塔 2 Mod",
-    spireDate: "2026 年 5 月 - 至今",
+    spireLinkLabel: "在 Steam 创意工坊查看杀戮尖塔 2 Mod - OTTO",
+    spireDate: "2026 年 5 月 - 2026 年 10 月",
     spireBody: "搭建 Mod 开发环境，完成卡牌图片替换与文本配置；目前正使用 BaseLib 开发新角色，包括角色基础设置、初始牌组和专属卡牌。",
     f1Title: "F1 赛车动力学与空气动力学性能优化",
     f1Date: "2026 年 1 月 - 2026 年 4 月",
+    f1Results: "查看研究结果",
     f1Body: "建立纵向与横向动力学模型，分析空气阻力、下压力和轮胎抓地力；基于 Navier-Stokes 方程与有限体积法实现简化二维 CFD，并结合圈速模型分析 CL-CD 权衡、优化空气动力学设定。",
     muTitle: "小木之旅",
     muDate: "2025 年 10 月 - 至今",
@@ -147,6 +157,13 @@ const translations = {
     toggleTitle: "切换至英文"
   }
 };
+
+// Detail pages can extend the shared language switcher with their own copy.
+if (window.portfolioPageTranslations) {
+  for (const language of ["en", "zh"]) {
+    Object.assign(translations[language], window.portfolioPageTranslations[language]);
+  }
+}
 
 const root = document.documentElement;
 const languageToggle = document.getElementById("language-toggle");
@@ -175,20 +192,6 @@ if (themeToggle) {
       // Theme switching still works for the current page.
     }
   });
-}
-
-function readStoredLanguage() {
-  try {
-    const storedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-    return storedLanguage === "en" || storedLanguage === "zh" ? storedLanguage : null;
-  } catch {
-    return null;
-  }
-}
-
-function detectBrowserLanguage() {
-  const browserLanguage = navigator.languages?.[0] || navigator.language || "en";
-  return browserLanguage.toLowerCase().startsWith("zh") ? "zh" : "en";
 }
 
 function applyLanguage(language, persist = false) {
@@ -241,7 +244,8 @@ function applyLanguage(language, persist = false) {
 }
 
 if (languageToggle) {
-  applyLanguage(readStoredLanguage() || detectBrowserLanguage());
+  // Every page load starts in English; visitors can switch languages manually.
+  applyLanguage("en");
 
   languageToggle.addEventListener("click", () => {
     const nextLanguage = languageToggle.dataset.currentLanguage === "zh" ? "en" : "zh";

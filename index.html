@@ -17,6 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="styles.css?v=73b7e3c64a">
   <link rel="stylesheet" href="companion.css?v=464517b3a6">
+<link rel="stylesheet" href="music-player.css?v=20261021-local-audio">
 </head>
 <body class="portfolio">
   <a class="skip-link" href="#main" data-i18n="skipToContent">Skip to content</a>
@@ -37,9 +38,23 @@
 
   <main class="container" id="main">
     <section id="intro" class="hero">
-      <div class="hero-copy">
+      <div class="hero-topline">
         <p class="eyebrow" data-i18n="heroDiscipline">Computer science × Physics</p>
-        <h1 data-i18n="heroTitle">为了防止世界被破坏&#10;为了守护世界的和平</h1>
+<div class="site-music site-music--hero">
+  <button class="music-toggle" type="button" aria-expanded="false" aria-controls="music-panel" aria-label="Music player: 834.194 by sakanaction" data-i18n-aria-label="musicPlayerLabel">
+    <span class="vinyl-caption"><span class="site-music-label">834.194</span><span class="site-music-artist">sakanaction</span></span>
+    <span class="vinyl-disc" aria-hidden="true"><img class="vinyl-label" src="assets/music/834194-cover.jpg" width="300" height="300" alt=""><span class="vinyl-hole"></span></span>
+  </button>
+  <section id="music-panel" class="music-panel" aria-label="Music player: 834.194 by sakanaction" data-i18n-aria-label="musicPlayerLabel">
+    <h2 data-i18n="musicTitle">Music for browsing</h2>
+    <p data-i18n="musicHint">Music starts automatically when allowed. If it stays silent, press play below. You can close this panel while listening.</p>
+    <audio class="music-audio" src="assets/music/834194.mp3" controls loop preload="metadata" aria-label="834.194 by sakanaction"></audio>
+    <p class="music-availability" data-i18n="musicAvailability">834.194 · sakanaction · Full track · Loop enabled</p>
+  </section>
+</div>
+      </div>
+      <div class="hero-copy">
+        <h1 data-i18n="heroTitle">To protect the world from devastation!&#10;To unite all peoples within our nation!</h1>
         <p data-i18n="heroBody">I build games, developer tools, and simulation projects, with a focus on game programming, algorithms, and computer systems.</p>
         <div class="cta">
           <a class="btn" href="#projects" data-i18n="viewProjects">View Projects</a>
@@ -88,8 +103,8 @@
         </article>
 
         <article class="card">
-          <h3><button class="project-select" type="button" aria-pressed="false" data-i18n="spireTitle">Slay the Spire 2 Mod</button></h3>
-          <p class="project-date" data-i18n="spireDate">May 2026 - Present</p>
+          <h3><button class="project-select" type="button" aria-pressed="false" data-i18n="spireTitle">Slay the Spire 2 Mod - OTTO</button></h3>
+          <p class="project-date" data-i18n="spireDate">May 2026 - Oct 2026</p>
           <ul class="meta">
             <li>Godot</li>
             <li>BaseLib</li>
@@ -97,7 +112,7 @@
           </ul>
           <p data-i18n="spireBody">Set up the mod development environment and completed card art replacement and text configuration. Now building a playable character with base settings, a starter deck, and exclusive cards.</p>
           <div class="actions">
-            <a class="btn sm ghost" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3816929315" target="_blank" rel="noopener noreferrer" data-i18n="spireLink" aria-label="View Slay the Spire 2 Mod on Steam Workshop" data-i18n-aria-label="spireLinkLabel">View on Steam Workshop</a>
+            <a class="btn sm ghost" href="https://steamcommunity.com/sharedfiles/filedetails/?id=3816929315" target="_blank" rel="noopener noreferrer" data-i18n="spireLink" aria-label="View Slay the Spire 2 Mod - OTTO on Steam Workshop" data-i18n-aria-label="spireLinkLabel">View on Steam Workshop</a>
           </div>
         </article>
 
@@ -109,7 +124,9 @@
             <li>Matplotlib</li>
             <li data-i18n="personalProject">Personal project</li>
           </ul>
+
           <p data-i18n="f1Body">Built longitudinal and lateral dynamics models to study drag, downforce, and tire grip; implemented simplified 2D CFD using the Navier-Stokes equations and FVM; then analyzed CL-CD trade-offs and optimized aero setups with a lap-time model.</p>
+          <div class="actions"><a class="btn sm ghost" href="f1-project.html" data-i18n="f1Results">View research results</a></div>
         </article>
 
         <article class="card">
@@ -156,7 +173,7 @@
               <a class="recent-artwork" href="https://ryu-ga-gotoku.com/zero-directorscut/asia_en/" target="_blank" rel="noopener noreferrer">
                 <img src="assets/recent/yakuza-0-directors-cut.png" width="1200" height="640" loading="lazy" decoding="async" alt="如龙0导演剪辑版" data-i18n-alt="recentGamesAlt">
               </a>
-              <strong data-i18n="recentGameName">如龙0导演剪辑版</strong>
+              <strong data-i18n="recentGameName">Yakuza 0 Director's Cut</strong>
             </li>
           </ul>
         </article>
@@ -170,7 +187,7 @@
               <a class="recent-artwork" href="https://www.madoka-magica.com/wr/" target="_blank" rel="noopener noreferrer">
                 <img src="assets/recent/madoka-walpurgisnacht.webp" width="1800" height="2546" loading="lazy" decoding="async" alt="魔法少女小圆 魔女的回天" data-i18n-alt="recentAnimeAlt">
               </a>
-              <strong data-i18n="recentAnimeName">魔法少女小圆 魔女的回天</strong>
+              <strong data-i18n="recentAnimeName">Puella Magi Madoka Magica the Movie: Walpurgisnacht Rising</strong>
             </li>
           </ul>
         </article>
@@ -184,7 +201,7 @@
               <a class="recent-artwork" href="https://sakanaction.jp/news/detail/2959" target="_blank" rel="noopener noreferrer">
                 <img src="assets/recent/kaiju.jpg" width="1600" height="1600" loading="lazy" decoding="async" alt="怪兽" data-i18n-alt="recentMusicAlt">
               </a>
-              <strong data-i18n="recentMusicName">怪兽</strong>
+              <strong data-i18n="recentMusicName">Kaiju</strong>
               <p>sakanaction</p>
             </li>
           </ul>
@@ -213,8 +230,9 @@
     <small>&copy; <span id="year"></span> Hongyi Ding. <span data-i18n="footerText">Built with vanilla HTML/CSS.</span></small>
   </footer>
 
-  <script src="script.js?v=9cb6bea57b"></script>
+  <script src="script.js?v=20261021-local-audio"></script>
   <script src="companion-config.js"></script>
   <script src="companion.js" defer></script>
+<script src="music-player.js?v=20261021-local-audio" defer></script>
 </body>
 </html>
