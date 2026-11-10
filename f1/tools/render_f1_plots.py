@@ -1,6 +1,6 @@
 """Recreate the analytic F1 figures without running or modifying the notebook.
 
-Run: python3 tools/render_f1_plots.py
+Run: python3 f1/tools/render_f1_plots.py
 The CFD image and the two original cornering parameter-sweep figures are
 preserved separately. All numbers here come from the notebook's models.
 """
@@ -8,7 +8,7 @@ from pathlib import Path
 from math import sqrt, isfinite
 from html import escape
 
-OUTPUT = Path(__file__).resolve().parents[1] / 'assets' / 'f1'
+OUTPUT = Path(__file__).resolve().parents[1] / 'figures'
 MASS, RHO, AREA, POWER, GRAVITY = 798.0, 1.225, 1.5, 750_000.0, 9.81
 MU, RADIUS, EFFICIENCY, CRR = 1.8, 80.0, 0.88, 0.018
 CIRCUITS = [('Power', 1000.0, 100.0, 11), ('Balanced', 600.0, 200.0, 12), ('Technical', 200.0, 300.0, 19)]

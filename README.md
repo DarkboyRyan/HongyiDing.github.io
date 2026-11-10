@@ -4,7 +4,7 @@ Static bilingual portfolio with project details, recent interests, music, and th
 
 - `companion.js`, `companion.css`, `companion-config.js`: current portrait, idle reactions, and optional Live2D support.
 - `companion-chat.js`, `companion-chat.css`: AI chat, source references, and owner-email draft UI. The Contact section can open the same chat directly.
-- `f1-project.html`, `f1-content.js`, `f1-project.js`, `f1-project.css`: research presentation. The notebook and model checks are retained for provenance.
+- `f1/`: F1 research presentation, original Jupyter notebook, figures, model checks, and optional figure renderer. Entry: `f1/index.html`.
 - `assets/`: current images, music, figures, and retained character models. Source/credit records and license notices are intentional files.
 
 ## Local preview
@@ -21,7 +21,7 @@ Open http://127.0.0.1:18880/. A plain static server does not provide the AI or m
 
 ```bash
 node --test tests/companion.test.cjs
-python3 -B tests/f1-model.test.py
+python3 -B f1/tests/f1-model.test.py
 ```
 
 `LIVE2D.md` documents the portrait and optional model integration. Unused previews, replaced artwork, placeholder blog page, and generated figures were archived outside the website on 2026-11-10; no cleanup backups are served with the site.

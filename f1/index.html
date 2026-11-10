@@ -8,24 +8,24 @@
 <meta property="og:title" content="F1 Vehicle Dynamics | Hongyi Ding">
 <meta property="og:description" content="Original course-project figures exploring cornering limits and the drag–downforce trade-off in a simplified F1 model.">
 <meta property="og:locale" content="en_US">
-<link rel="stylesheet" href="styles.css?v=73b7e3c64a">
-<link rel="stylesheet" href="f1-project.css?v=d1af68f70c">
-<link rel="stylesheet" href="music-player.css?v=20261021-local-audio">
+<link rel="stylesheet" href="../styles.css?v=73b7e3c64a">
+<link rel="stylesheet" href="f1-project.css?v=20261110-heading-swap">
+<link rel="stylesheet" href="../music-player.css?v=20261021-local-audio">
 </head>
 <body class="research-page">
 <a class="skip-link" href="#main" data-i18n="skipToContent">Skip to content</a>
 <header class="container header">
-<a class="brand" href="index.html">Hongyi Ding</a>
+<a class="brand" href="../index.html">Hongyi Ding</a>
 <div class="header-navigation">
-<a class="back-link" href="index.html#projects" data-i18n="f1Back">← All projects</a>
+<a class="back-link" href="../index.html#projects" data-i18n="f1Back">← All projects</a>
 <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch to Chinese">中/En</button>
 </div>
 </header>
 <main class="container" id="main">
 <section class="research-hero">
 <p class="eyebrow" data-i18n="f1Course">PHYS3211 · Final project · March 2026</p>
-<p class="research-name" data-i18n="f1FullName">F1 Vehicle Dynamics</p>
-<h1 data-i18n="f1PageTitle">Downforce, grip, and cornering.</h1>
+<h1 data-i18n="f1FullName">F1 Vehicle Dynamics</h1>
+<p class="research-name" data-i18n="f1PageTitle">Downforce, grip, and cornering.</p>
 <p class="research-lead" data-i18n="f1Lead">For my PHYS3211 final project, I explored how downforce and tire grip affect cornering performance in a simplified vehicle model. The figures show the cornering limits and the trade-off between straight-line speed and cornering speed.</p>
 <ul class="meta">
 <li>Python</li>
@@ -48,14 +48,14 @@
 </div>
 <div class="research-plots">
 <figure class="research-figure">
-<a class="figure-zoom" href="assets/f1/downforce.png" target="_blank" rel="noopener">
-<img src="assets/f1/downforce.png" width="1054" height="714" alt="Grip-limited cornering speed as CL increases, with tire friction fixed at μ = 1.8 and corner radius at 80 m." data-i18n-alt="f1DownCaption" loading="lazy" decoding="async">
+<a class="figure-zoom" href="figures/downforce.png" target="_blank" rel="noopener">
+<img src="figures/downforce.png" width="1054" height="714" alt="Grip-limited cornering speed as CL increases, with tire friction fixed at μ = 1.8 and corner radius at 80 m." data-i18n-alt="f1DownCaption" loading="lazy" decoding="async">
 </a>
 <figcaption data-i18n="f1DownCaption">Grip-limited cornering speed as CL increases, with tire friction fixed at μ = 1.8 and corner radius at 80 m.</figcaption>
 </figure>
 <figure class="research-figure">
-<a class="figure-zoom" href="assets/f1/grip.png" target="_blank" rel="noopener">
-<img src="assets/f1/grip.png" width="1054" height="714" alt="Grip-limited cornering speed as tire friction increases, with downforce fixed at CL = 3.0 and corner radius at 80 m." data-i18n-alt="f1GripCaption" loading="lazy" decoding="async">
+<a class="figure-zoom" href="figures/grip.png" target="_blank" rel="noopener">
+<img src="figures/grip.png" width="1054" height="714" alt="Grip-limited cornering speed as tire friction increases, with downforce fixed at CL = 3.0 and corner radius at 80 m." data-i18n-alt="f1GripCaption" loading="lazy" decoding="async">
 </a>
 <figcaption data-i18n="f1GripCaption">Grip-limited cornering speed as tire friction increases, with downforce fixed at CL = 3.0 and corner radius at 80 m.</figcaption>
 </figure>
@@ -72,14 +72,14 @@
 </div>
 <div class="research-plots">
 <figure class="research-figure">
-<a class="figure-zoom" href="assets/f1/tradeoff.png" target="_blank" rel="noopener">
-<img src="assets/f1/tradeoff.png" width="823" height="596" alt="Original notebook figure. The dotted line marks the best sampled CL for the simplified lap-time proxy, at the upper boundary of the scan." data-i18n-alt="f1TradeCaption" loading="lazy" decoding="async">
+<a class="figure-zoom" href="figures/tradeoff.png" target="_blank" rel="noopener">
+<img src="figures/tradeoff.png" width="823" height="596" alt="Original notebook figure. The dotted line marks the best sampled CL for the simplified lap-time proxy, at the upper boundary of the scan." data-i18n-alt="f1TradeCaption" loading="lazy" decoding="async">
 </a>
 <figcaption data-i18n="f1TradeCaption">Original notebook figure. The dotted line marks the best sampled CL for the simplified lap-time proxy, at the upper boundary of the scan.</figcaption>
 </figure>
 <figure class="research-figure" id="drag-relationship">
-<a class="figure-zoom" href="assets/f1/drag-penalty.png" target="_blank" rel="noopener">
-<img src="assets/f1/drag-penalty.png" width="813" height="596" alt="Original notebook figure showing the assumed relationship CD = 0.40 + 0.25 CL. The “Optimum” marker refers only to the best sampled CL for the simplified lap-time proxy, at the upper boundary of the scan; it does not establish a global optimum." data-i18n-alt="f1DragCaption" loading="lazy" decoding="async">
+<a class="figure-zoom" href="figures/drag-penalty.png" target="_blank" rel="noopener">
+<img src="figures/drag-penalty.png" width="813" height="596" alt="Original notebook figure showing the assumed relationship CD = 0.40 + 0.25 CL. The “Optimum” marker refers only to the best sampled CL for the simplified lap-time proxy, at the upper boundary of the scan; it does not establish a global optimum." data-i18n-alt="f1DragCaption" loading="lazy" decoding="async">
 </a>
 <figcaption data-i18n="f1DragCaption">Original notebook figure showing the assumed relationship CD = 0.40 + 0.25 CL. The “Optimum” marker refers only to the best sampled CL for the simplified lap-time proxy, at the upper boundary of the scan; it does not establish a global optimum.</figcaption>
 </figure>
@@ -101,8 +101,8 @@
 </div>
 <div class="research-plots">
 <figure class="research-figure">
-<a class="figure-zoom" href="assets/f1/flow-field.png" target="_blank" rel="noopener">
-<img src="assets/f1/flow-field.png" width="932" height="468" alt="Original notebook output from the unvalidated 2D flow prototype. Cyan outlines mark the rectangular obstacles." data-i18n-alt="f1FlowCaption" loading="lazy" decoding="async">
+<a class="figure-zoom" href="figures/flow-field.png" target="_blank" rel="noopener">
+<img src="figures/flow-field.png" width="932" height="468" alt="Original notebook output from the unvalidated 2D flow prototype. Cyan outlines mark the rectangular obstacles." data-i18n-alt="f1FlowCaption" loading="lazy" decoding="async">
 </a>
 <figcaption data-i18n="f1FlowCaption">Original notebook output from the unvalidated 2D flow prototype. Cyan outlines mark the rectangular obstacles.</figcaption>
 </figure>
@@ -116,7 +116,7 @@
 <footer class="container footer">
 <small>© <span id="year">
 </span> Hongyi Ding.</small>
-<a href="index.html#projects" data-i18n="f1Back">← All projects</a>
+<a href="../index.html#projects" data-i18n="f1Back">← All projects</a>
 </footer>
 <dialog class="figure-dialog" aria-label="Figure" aria-labelledby="figure-caption">
 <button type="button" class="btn ghost" id="close-figure" data-i18n="f1Close">Close figure</button>
@@ -132,16 +132,16 @@
   <section id="music-panel" class="music-panel" aria-label="Music player: 834.194 by sakanaction" data-i18n-aria-label="musicPlayerLabel">
     <h2 data-i18n="musicTitle">Music for browsing</h2>
     <p data-i18n="musicHint">Music starts automatically when allowed. If it stays silent, press play below. You can close this panel while listening.</p>
-    <audio class="music-audio" src="assets/music/834194.mp3" controls loop preload="metadata" aria-label="834.194 by sakanaction"></audio>
+    <audio class="music-audio" src="../assets/music/834194.mp3" controls loop preload="metadata" aria-label="834.194 by sakanaction"></audio>
     <p class="music-availability" data-i18n="musicAvailability">834.194 · sakanaction · Full track · Loop enabled</p>
   </section>
 </div>
 <script src="f1-content.js?v=1be486a26d">
 </script>
-<script src="script.js?v=20261021-local-audio">
+<script src="../script.js?v=20261021-local-audio">
 </script>
 <script src="f1-project.js?v=5b049b1aac">
 </script>
-<script src="music-player.js?v=20261021-local-audio" defer></script>
+<script src="../music-player.js?v=20261021-local-audio" defer></script>
 </body>
 </html>
