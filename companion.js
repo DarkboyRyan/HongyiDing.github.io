@@ -8,7 +8,7 @@
     en: {
       label: "Website companion", open: "Meet {name}", close: "Minimize companion",
       pause: "Pause animation", resume: "Resume animation", greet: "Say hello to {name}",
-      welcome: "Hi! Welcome to Hongyi’s corner. Shall we explore his projects?",
+      welcome: "Oh, you’re here. Have a look around—or say what’s on your mind.",
       loading: "Just a moment, I’m getting ready…",
       error: "I couldn’t load right now. You can retry or keep exploring the website.",
       retry: "Try again", projects: "Explore projects", about: "About Hongyi",
@@ -17,7 +17,7 @@
     zh: {
       label: "网页小伙伴", open: "和{name}打招呼", close: "收起小伙伴",
       pause: "暂停动画", resume: "继续动画", greet: "和{name}打招呼",
-      welcome: "你好呀！欢迎来到泓邑的小天地。一起看看他的项目吧？",
+      welcome: "来了？先随便看看。有话也可以直接跟我说。",
       loading: "稍等一下，我正在准备出场……",
       error: "暂时没能加载出来，你可以重试，也可以继续浏览网页。",
       retry: "重新加载", projects: "看看项目", about: "认识泓邑",
@@ -29,7 +29,6 @@
   let collapsed = false;
   let paused = reducedMotion.matches;
   let status = "loading";
-  let greeted = false;
   let sleeping = false;
   let sleepReady = false;
   let idleTimer;
@@ -100,7 +99,7 @@
     pauseButton.textContent = paused ? "▷" : "Ⅱ";
     stage.setAttribute("aria-label", text.greet.replace("{name}", name));
     find(".companion-message").textContent = status === "ready"
-      ? (sleeping ? text.resting : greeted ? config.greeting : text.welcome) : text[status];
+      ? (sleeping ? text.resting : text.welcome) : text[status];
     find('[data-link="projects"]').textContent = text.projects;
     find('[data-link="about"]').textContent = text.about;
     retryButton.textContent = text.retry;
@@ -306,7 +305,6 @@
     if (status !== "ready" || Date.now() - lastTap < 700) return;
     lastTap = Date.now();
     noteActivity();
-    greeted = true;
     translate();
     if (!paused) {
       if (isPortrait) {
@@ -318,6 +316,18 @@
       void model.motion(config.tapMotion, undefined, window.PIXI.live2d.MotionPriority.FORCE);
       const expressions = config.expressions || [];
       if (expressions.length) void model.expression(expressions[expressionIndex++ % expressions.length]);
+    }
+  });
+  // Chat responses share the existing portrait / Live2D reaction hook.
+  document.addEventListener("companion:chat-state", (event) => {
+    noteActivity();
+    if (event.detail?.state !== "replied" || status !== "ready" || paused) return;
+    if (isPortrait) {
+      sprite.setAttribute("data-greeting", "true");
+      clearTimeout(reactionTimer);
+      reactionTimer = setTimeout(() => sprite.removeAttribute("data-greeting"), 600);
+    } else if (model && config.tapMotion) {
+      void model.motion(config.tapMotion, undefined, window.PIXI.live2d.MotionPriority.FORCE);
     }
   });
   window.addEventListener("pointermove", (event) => {

@@ -4,17 +4,17 @@
 
 当前默认使用 **矢本小季（Yamoto Koki）的透明立绘互动版**，由用户确认先替换外观。以提供的动画画面为参考生成正面立绘，包含黑色短发、蓝眼睛、深蓝牛角扣外套、百褶裙和背刀。保留轻微摆动、点击回应、中英文对话、页面导航、暂停和收起。每次打开或刷新网页时默认显示在右下角，手机和矮屏也一样；仅点击「−」按钮收起，不读取或保存收起状态，导航和窗口尺寸变化不会自动收起。加载失败显示重试，收起或页面进入后台会暂停动画；系统设置减少动态效果时默认暂停。
 
-当前立绘版支持左右轻摆、30 秒无操作后闭眼休息，以及点击后的轻跳问候。鼠标移动、滚动、键盘或点击会唤醒并重新计时；收起与后台状态不计时。点击台词为「demo、矢本小季です。」，仅显示文字，不播放语音。
+当前立绘版支持左右轻摆、30 秒无操作后闭眼休息，以及点击后的轻跳问候。鼠标移动、滚动、键盘或点击会唤醒并重新计时；收起与后台状态不计时。点击显示随网页语言切换的问候文字，并展开 AI 聊天框，不播放语音。
 
-闭眼由 imagegen 生成的眼部图像叠加完成：`sleeping-eyes.png` 只通过 CSS 裁切显示眼睛区域，保留原立绘的身体、姿态与透明背景。它不是 Live2D 转头、眼睛跟随或连续绑定动画，也没有 AI 对话。完整 Live2D 支持和 Haru 示例文件仍保留，但默认不会下载或运行这些依赖。矢本小季定制 Live2D 仍需分层绘制、Cubism 绑定与导出。
+闭眼由 imagegen 生成的眼部图像叠加完成：`sleeping-eyes.png` 只通过 CSS 裁切显示眼睛区域，保留原立绘的身体、姿态与透明背景。它不是 Live2D 转头、眼睛跟随或连续绑定动画，AI 聊天通过独立的 companion-chat.js 接入云端角色，不由立绘动画实现。完整 Live2D 支持和 Haru 示例文件仍保留，但默认不会下载或运行这些依赖。矢本小季定制 Live2D 仍需分层绘制、Cubism 绑定与导出。
 
 `companion-config.js` 中 `mode: "portrait"` 指定立绘模式，`portraitUrl` 指向 `assets/characters/yamoto-koki/standing.png`。`name`/`nameZh` 指定双语角色名称。图像来源和生成提示词保存在同目录的 `provenance.json`，鸣谢页面为 `character-notices.html`。
 
-`sleepingPortraitUrl` 指定闭眼素材，`idleAfterMs` 设置休息等待时间（默认 30000 毫秒）；`greeting` 为显示台词。换成别的尺寸或姿态时，需要重新调整 companion.css 的眼部裁切区域。
+`sleepingPortraitUrl` 指定闭眼素材，`idleAfterMs` 设置休息等待时间（默认 30000 毫秒）；问候文字在 companion.js 的中英文文案中维护。换成别的尺寸或姿态时，需要重新调整 companion.css 的眼部裁切区域。
 
 ## 本地预览 / 发布
 
-在项目目录运行 `python3 -m http.server 8765 --bind 127.0.0.1`，访问 `http://127.0.0.1:8765/`。必须通过 HTTP 预览，不要双击 HTML 使用 file://。
+完整聊天预览使用站点目录外的 `website-chat/preview-server.mjs`，访问 `http://127.0.0.1:18880/`。普通静态服务只能预览页面，不提供 AI 聊天或邮件接口。必须通过 HTTP 预览，不要双击 HTML 使用 file://。
 
 无需 npm 或构建步骤。GitHub Pages 发布时，一起提交三个 companion 文件、index.html、assets、vendor/live2d、character-notices.html 和 live2d-notices.html。所有运行时文件都在本地，运行时无需第三方 CDN。原网站的其他文件照常发布。
 

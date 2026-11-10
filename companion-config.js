@@ -5,7 +5,6 @@ window.PORTFOLIO_COMPANION = Object.freeze({
   portraitUrl: "assets/characters/yamoto-koki/standing.png",
   sleepingPortraitUrl: "assets/characters/yamoto-koki/sleeping-eyes.png",
   idleAfterMs: 30000,
-  greeting: "demo、矢本小季です。",
   modelUrl: "assets/live2d/haru/haru_greeter_t03.model3.json",
   name: "Yamoto Koki",
   nameZh: "矢本小季",

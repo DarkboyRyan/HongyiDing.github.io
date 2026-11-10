@@ -232,7 +232,7 @@ test('portrait mode loads Yamoto artwork without any Live2D scripts and responds
   h.language('zh-CN');
   assert.equal(h.elements['.companion-name'].textContent, '矢本小季');
   h.elements['.companion-stage'].emit('click');
-  assert.equal(h.elements['.companion-message'].textContent, 'demo、矢本小季です。');
+  assert.equal(h.elements['.companion-message'].textContent, "来了？先随便看看。有话也可以直接跟我说。");
   assert.equal(h.elements['.companion-sprite'].attributes['data-greeting'], 'true');
   h.elements['[data-action="pause"]'].emit('click');
   assert.equal(h.host.attributes['data-animated'], 'false');
@@ -278,14 +278,14 @@ test('30 seconds of inactivity closes eyes; moving, scrolling and clicking reset
   h.advance(30000);
   h.elements['.companion-stage'].emit('click');
   assert.equal(h.elements['.companion-sleep-eyes'].hidden, true);
-  assert.equal(h.elements['.companion-message'].textContent, 'demo、矢本小季です。');
+  assert.equal(h.elements['.companion-message'].textContent, "Oh, you’re here. Have a look around—or say what’s on your mind.");
 });
 
 test('click greeting stays text-only even when browser speech is available', async () => {
   const h = harness({ mode: 'portrait' }); await flush();
   assert.equal(h.utterances.length, 0);
   h.elements['.companion-stage'].emit('click');
-  assert.equal(h.elements['.companion-message'].textContent, 'demo、矢本小季です。');
+  assert.equal(h.elements['.companion-message'].textContent, "Oh, you’re here. Have a look around—or say what’s on your mind.");
   h.elements['.companion-stage'].emit('click');
   assert.equal(h.utterances.length, 0);
   h.advance(701); h.elements['.companion-stage'].emit('click');
@@ -317,7 +317,7 @@ test('missing speech or resting artwork does not break greeting or the original 
   h.advance(60000);
   assert.equal(h.elements['.companion-sleep-eyes'].hidden, true);
   h.elements['.companion-stage'].emit('click');
-  assert.equal(h.elements['.companion-message'].textContent, 'demo、矢本小季です。');
+  assert.equal(h.elements['.companion-message'].textContent, "Oh, you’re here. Have a look around—or say what’s on your mind.");
   assert.equal(h.elements['.companion-stage'].hidden, false);
   assert.ok(fs.statSync(path.join(base, 'assets/characters/yamoto-koki/sleeping-eyes.png')).size > 0);
 });
