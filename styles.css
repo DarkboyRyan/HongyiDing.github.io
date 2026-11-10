@@ -94,6 +94,7 @@ h3 { margin: 0; font: 600 21px/1.4 var(--display); letter-spacing: -.4px; }
 .contact a::after { content: "↗"; color: var(--accent); }
 .contact a:hover { color: var(--accent); text-decoration: underline; }
 .footer { margin-top: 58px; padding-block: 24px 38px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+.footer-updated { display: block; margin-top: 6px; }
 a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 .skip-link { position: fixed; z-index: 100; left: 16px; top: 12px; padding: 10px 16px; border-radius: 8px; background: var(--card); transform: translateY(-180%); }
 .skip-link:focus { transform: translateY(0); }

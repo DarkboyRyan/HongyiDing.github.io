@@ -52,6 +52,11 @@ const translations = {
     projectFocus: "Games / Tools / Simulation",
     personalProject: "Personal project",
     teamProject: "Team project",
+    bilibiliTitle: "Bilibili AI Agent",
+    bilibiliDate: "Nov 2026 - Present",
+    bilibiliBody: "Built an independent Bilibili AI account, 高松灯-侠影江湖, that responds to mentions and replies in video comments, keeps context within comment threads, and uses available subtitles and sampled video frames for analysis when requested.",
+    bilibiliLink: "Visit AI account",
+    bilibiliLinkLabel: "Visit the Bilibili AI account 高松灯-侠影江湖",
     scratchTitle: "Scratch Novel Engine",
     scratchDate: "Jun 2026 - Present",
     scratchBody: "A visual novel engine with an Electron editor shell and C++ core, used to create my game The Door at Seven. Development of the editor and runtime continues.",
@@ -83,6 +88,7 @@ const translations = {
     contactOwner: "Contact the site owner",
     contactCompanion: "Tell Yamoto Koki",
     footerText: "Built with vanilla HTML/CSS.",
+    lastUpdated: "Last updated:",
     toggleLabel: "中/En",
     toggleAriaLabel: "Switch to Chinese",
     toggleTitle: "Switch to Chinese"
@@ -125,6 +131,11 @@ const translations = {
     projectFocus: "游戏 / 工具 / 仿真",
     personalProject: "个人项目",
     teamProject: "团队项目",
+    bilibiliTitle: "B站 AI Agent · 高松灯-侠影江湖",
+    bilibiliDate: "2026 年 11 月 - 至今",
+    bilibiliBody: "搭建独立的 B站 AI 账号「高松灯-侠影江湖」，自动回应视频评论中的 @ 和回复，保留同一评论楼层的对话上下文；在明确要求分析视频时，结合可用字幕和抽样画面作答。",
+    bilibiliLink: "访问 AI 账号主页",
+    bilibiliLinkLabel: "访问高松灯-侠影江湖的 B站 AI 账号主页",
     scratchTitle: "文字小说引擎（Scratch Novel Engine）",
     scratchDate: "2026 年 6 月 - 至今",
     scratchBody: "自主开发的文字小说引擎，采用 Electron 编辑器外壳与 C++ 核心，已用于制作个人游戏 The Door at Seven，并持续完善编辑器与运行时。",
@@ -156,6 +167,7 @@ const translations = {
     contactOwner: "联系站长",
     contactCompanion: "告诉矢本小季",
     footerText: "使用原生 HTML/CSS 构建。",
+    lastUpdated: "最后更新：",
     toggleLabel: "中/En",
     toggleAriaLabel: "切换至英文",
     toggleTitle: "切换至英文"
@@ -180,6 +192,32 @@ const ogLocale = document.querySelector('meta[property="og:locale"]');
 document.querySelectorAll("#year").forEach((element) => {
   element.textContent = String(new Date().getFullYear());
 });
+
+// GitHub Pages supplies the deployed file's timestamp; never use the visitor's current date.
+const siteUpdated = document.getElementById("site-updated");
+if (siteUpdated) {
+  fetch(new URL("index.html", document.baseURI), {
+    method: "HEAD",
+    cache: "no-cache",
+    signal: AbortSignal.timeout(5000),
+  }).then((response) => {
+    if (!response.ok) return;
+    const modified = response.headers.get("Last-Modified");
+    if (!modified) return;
+    const published = new Date(modified);
+    if (Number.isNaN(published.getTime())) return;
+    const parts = new Intl.DateTimeFormat("en", {
+      timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit",
+    }).formatToParts(published);
+    const value = (type) => parts.find((part) => part.type === type).value;
+    const date = `${value("year")}-${value("month")}-${value("day")}`;
+    siteUpdated.dateTime = date;
+    siteUpdated.textContent = date;
+  }).catch(() => {
+    // Keep the embedded release date if offline or the host omits Last-Modified.
+  });
+}
+
 
 try {
   if (localStorage.getItem("theme") === "dark") root.classList.add("dark");
