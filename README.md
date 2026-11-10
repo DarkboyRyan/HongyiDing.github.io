@@ -15,7 +15,7 @@ The private chat/mail service lives outside this static repository:
 node '/Users/ryanding/Documents/ChatGPT/vpn维护/website-chat/preview-server.mjs'
 ```
 
-Open http://127.0.0.1:18880/. A plain static server does not provide the AI or mail endpoints. Public deployment still needs a separately hosted HTTPS backend; credentials must not be committed to this website.
+Open http://127.0.0.1:18880/. A plain static server does not provide the AI or mail endpoints. The public site connects to a separately hosted HTTPS backend configured by `apiBaseUrl` in `companion-config.js`. Chat and mail share that backend; the browser receives only an anonymous session token. Credentials must not be committed to this website. Localhost previews continue using the local service above.
 
 ## Checks
 

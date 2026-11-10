@@ -2,6 +2,7 @@
 // Switch mode to "live2d" and supply your custom model when its rig is ready.
 window.PORTFOLIO_COMPANION = Object.freeze({
   mode: "portrait",
+  apiBaseUrl: "https://koki.66-42-107-61.sslip.io:8443",
   portraitUrl: "assets/characters/yamoto-koki/standing.png",
   sleepingPortraitUrl: "assets/characters/yamoto-koki/sleeping-eyes.png",
   idleAfterMs: 30000,

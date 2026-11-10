@@ -2,11 +2,21 @@
   'use strict';
   const storageKey='portfolio-companion-chat-v1';
   const config=window.PORTFOLIO_COMPANION || {};
+  const localPreview=['127.0.0.1','localhost'].includes(location.hostname);
+  const apiBase=localPreview?'':(config.apiBaseUrl||'').replace(/\/$/,'');
+  const tokenKey='portfolio-companion-api-token:'+apiBase;
+  let apiToken='';
+  try{apiToken=sessionStorage.getItem(tokenKey)||'';}catch{}
+  function apiFetch(path,options={}){
+    const headers={...options.headers};
+    if(apiBase&&apiToken)headers.Authorization='Bearer '+apiToken;
+    return fetch(apiBase+path,{...options,headers,credentials:apiBase?'omit':'same-origin'});
+  }
   const locale=()=>document.documentElement.lang.startsWith('zh')?'zh':'en';
   const names={zh:config.nameZh||'矢本小季',en:config.name||'Yamoto Koki'};
   const copy={
-    zh:{contact:'要发邮件问站长吗？',subject:'主题',body:'邮件内容',review:'填写你的回复邮箱，确认后由矢本小季发送给站长；站长可直接回复你。',openMail:'确认发送邮件',replyEmail:'你的回复邮箱',mailSending:'正在发送……',mailSent:'邮件已交给邮件服务，站长可通过你填写的邮箱回复。',invalidMail:'请填写有效的回复邮箱，并检查主题和正文。',mailNotConfigured:'专用邮箱尚未完成授权，暂时无法发送。草稿已保留。',mailUnavailable:'邮件服务暂不可用，草稿已保留。',mailAuth:'发件邮箱授权需要更新，请联系站长。',mailUncertain:'无法确认是否已发出，请勿重复发送，联系站长核实。',mailRate:'发送次数较多，请稍后再试。',mailConflict:'该草稿已提交，请不要重复修改发送。',mailSession:'请先重新发送一条聊天消息，再提交邮件。',cancelMail:'暂不询问',sources:'源码参考',new:'开启新对话',close:'收起聊天',log:'聊天记录',label:'想说什么？',placeholder:'说点什么吧……',hint:'Enter 发送 · Shift + Enter 换行',send:'发送 ↗',trigger:'聊两句 ↗',you:'你',welcome:'……来都来了，说点什么吧。先声明，我可不是一直在等你。',fresh:'新对话已开启。',unavailable:'聊天尚在测试，稍后再来找我吧。',thinking:'正在想怎么回答你……',failed:'暂时没有连上聊天服务。原消息已保留，可以重试。',timeout:'这次等得有些久，消息已放回输入框，可以重试。',busy:'上一条还在回复，请稍等。',rate:'消息有点密，稍等一分钟再聊。',invalid:'请输入不超过 2000 字的消息。'},
-    en:{contact:'Ask the site owner by email?',subject:'Subject',body:'Message',review:'Enter your reply email, then confirm. Yamoto Koki will email the owner, who can reply directly to you.',openMail:'Confirm and send email',replyEmail:'Your reply email',mailSending:'Sending…',mailSent:'Accepted by the mail service. The owner can reply to your email.',invalidMail:'Enter a valid reply email and check the subject and message.',mailNotConfigured:'The dedicated mailbox is not authorized yet. Your draft is saved.',mailUnavailable:'Mail is temporarily unavailable. Your draft is saved.',mailAuth:'The sender’s authorization needs updating.',mailUncertain:'Delivery could not be confirmed. Please do not resend; contact the owner.',mailRate:'Too many email attempts. Please try later.',mailConflict:'This draft was already submitted. Please do not resubmit edits.',mailSession:'Send a new chat message before submitting this email.',cancelMail:'Not now',sources:'Source excerpts',new:'New conversation',close:'Close chat',log:'Conversation',label:'What’s on your mind?',placeholder:'Say something…',hint:'Enter to send · Shift + Enter for a new line',send:'Send ↗',trigger:'Let’s chat ↗',you:'You',welcome:'…Well, you’re here. Say something. It’s not as if I’ve been waiting for you.',fresh:'New conversation started.',unavailable:'Chat is still being tested. Come back soon.',thinking:'Thinking of a reply…',failed:'Couldn’t reach the chat service. Your message is ready to retry.',timeout:'That took a little too long. Your message is ready to retry.',busy:'Still replying to the previous message. Please wait.',rate:'A little too fast. Please wait a minute.',invalid:'Please enter a message of up to 2,000 characters.'}
+    zh:{contact:'要发邮件问站长吗？',subject:'主题',body:'邮件内容',review:'填写你的回复邮箱，确认后由矢本小季发送给站长；站长可直接回复你。',openMail:'确认发送邮件',replyEmail:'你的回复邮箱',mailSending:'正在发送……',mailSent:'邮件已交给邮件服务，站长可通过你填写的邮箱回复。',invalidMail:'请填写有效的回复邮箱，并检查主题和正文。',mailNotConfigured:'专用邮箱尚未完成授权，暂时无法发送。草稿已保留。',mailUnavailable:'邮件服务暂不可用，草稿已保留。',mailAuth:'发件邮箱授权需要更新，请联系站长。',mailUncertain:'无法确认是否已发出，请勿重复发送，联系站长核实。',mailRate:'发送次数较多，请稍后再试。',mailConflict:'该草稿已提交，请不要重复修改发送。',mailSession:'请先重新发送一条聊天消息，再提交邮件。',cancelMail:'暂不询问',sources:'源码参考',new:'开启新对话',close:'收起聊天',log:'聊天记录',label:'想说什么？',placeholder:'说点什么吧……',hint:'Enter 发送 · Shift + Enter 换行',send:'发送 ↗',trigger:'聊两句 ↗',you:'你',welcome:'……来都来了，说点什么吧。先声明，我可不是一直在等你。',fresh:'新对话已开启。',unavailable:'聊天尚在测试，稍后再来找我吧。',thinking:'正在想怎么回答你……',failed:'暂时没有连上聊天服务。原消息已保留，可以重试。',timeout:'这次等得有些久，消息已放回输入框，可以重试。',busy:'上一条还在回复，请稍等。',rate:'聊天使用次数较多，请稍后再试。',invalid:'请输入不超过 2000 字的消息。'},
+    en:{contact:'Ask the site owner by email?',subject:'Subject',body:'Message',review:'Enter your reply email, then confirm. Yamoto Koki will email the owner, who can reply directly to you.',openMail:'Confirm and send email',replyEmail:'Your reply email',mailSending:'Sending…',mailSent:'Accepted by the mail service. The owner can reply to your email.',invalidMail:'Enter a valid reply email and check the subject and message.',mailNotConfigured:'The dedicated mailbox is not authorized yet. Your draft is saved.',mailUnavailable:'Mail is temporarily unavailable. Your draft is saved.',mailAuth:'The sender’s authorization needs updating.',mailUncertain:'Delivery could not be confirmed. Please do not resend; contact the owner.',mailRate:'Too many email attempts. Please try later.',mailConflict:'This draft was already submitted. Please do not resubmit edits.',mailSession:'Send a new chat message before submitting this email.',cancelMail:'Not now',sources:'Source excerpts',new:'New conversation',close:'Close chat',log:'Conversation',label:'What’s on your mind?',placeholder:'Say something…',hint:'Enter to send · Shift + Enter for a new line',send:'Send ↗',trigger:'Let’s chat ↗',you:'You',welcome:'…Well, you’re here. Say something. It’s not as if I’ve been waiting for you.',fresh:'New conversation started.',unavailable:'Chat is still being tested. Come back soon.',thinking:'Thinking of a reply…',failed:'Couldn’t reach the chat service. Your message is ready to retry.',timeout:'That took a little too long. Your message is ready to retry.',busy:'Still replying to the previous message. Please wait.',rate:'The chat usage limit has been reached. Please try again later.',invalid:'Please enter a message of up to 2,000 characters.'}
   };
   const t=key=>copy[locale()][key]||copy[locale()].failed;
   let mailStatusPromise;
@@ -64,7 +74,7 @@
       if(!replyEmail.value.trim()||!replyEmail.checkValidity()||!subject.value.trim()||!body.value.trim()){showDelivery('invalidMail');replyEmail.reportValidity();return;}
       draft.sending=true;openMail.disabled=true;showDelivery('mailSending');
       try{
-        const response=await fetch('/api/companion/mail',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Companion-Chat':'1'},body:JSON.stringify({id:draft.id,subject:subject.value,body:body.value,replyEmail:replyEmail.value.trim(),confirmed:true}),signal:AbortSignal.timeout(50000)});
+        const response=await apiFetch('/api/companion/mail',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Companion-Chat':'1'},body:JSON.stringify({id:draft.id,subject:subject.value,body:body.value,replyEmail:replyEmail.value.trim(),confirmed:true}),signal:AbortSignal.timeout(50000)});
         const data=await response.json();
         if(!response.ok||!data.ok){const key=['invalidMail','mailNotConfigured','mailUnavailable','mailAuth','mailUncertain','mailRate','mailConflict','mailSession'].includes(data.code)?data.code:'mailUnavailable';showDelivery(key);if(key==='mailUncertain')draft.uncertain=true;}
         else{draft.sent=true;showDelivery('mailSent');subject.disabled=true;body.disabled=true;replyEmail.disabled=true;}
@@ -74,7 +84,7 @@
     const cancel=document.createElement('button');cancel.type='button';cancel.dataset.ccText='cancelMail';cancel.textContent=t('cancelMail');cancel.addEventListener('click',()=>{draft.dismissed=true;details.remove();save();});
     actions.append(openMail,cancel);details.append(actions,delivery);row.append(details);
     if(draft.uncertain){openMail.disabled=true;showDelivery('mailUncertain');}
-    (mailStatusPromise||=fetch('/api/companion/mail-status').then(r=>r.json())).then(data=>{if(!data.configured&&!draft.sent&&!draft.uncertain)showDelivery('mailNotConfigured');}).catch(()=>{});
+    (mailStatusPromise||=apiFetch('/api/companion/mail-status').then(r=>r.json())).then(data=>{if(!data.configured&&!draft.sent&&!draft.uncertain)showDelivery('mailNotConfigured');}).catch(()=>{});
   }
   function draw(){log.replaceChildren();if(!messages.length)bubble('assistant',t('welcome'));else messages.forEach(m=>bubble(m.role,m.text,m.sources,m.contactDraft));}
   function open(){lastFocus=document.activeElement;panel.hidden=false;document.body.classList.add('companion-chat-open');trigger.setAttribute('aria-expanded','true'); input.focus();log.scrollTop=log.scrollHeight;}
@@ -88,15 +98,16 @@
   panel.querySelector('.cc-new').addEventListener('click',()=>{if(busy)return;conversation=crypto.randomUUID();messages=[];save();draw();setStatus('fresh');input.focus();});
   panel.querySelector('form').addEventListener('submit',async e=>{
     e.preventDefault(); const text=input.value.trim();if(!text||busy)return;
-    if(!['127.0.0.1','localhost'].includes(location.hostname) && !config.chatEndpoint){setStatus('unavailable');return;}
+    if(!localPreview && !apiBase && !config.chatEndpoint){setStatus('unavailable');return;}
     busy=true;send.disabled=true; panel.querySelector('.cc-new').disabled=true; input.value='';
     messages.push({role:'user',text});bubble('user',text);save();setStatus('thinking');
     document.dispatchEvent(new CustomEvent('companion:chat-state',{detail:{state:'thinking'}}));
     const controller=new AbortController(); const timer=setTimeout(()=>controller.abort(),135000);
     try{
-      const res=await fetch(config.chatEndpoint||'/api/companion/chat',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Companion-Chat':'1'},body:JSON.stringify({message:text,conversation,language:locale()}),signal:controller.signal});
+      const res=await apiFetch(config.chatEndpoint||'/api/companion/chat',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-Companion-Chat':'1'},body:JSON.stringify({message:text,conversation,language:locale()}),signal:controller.signal});
       let data;try{data=await res.json();}catch{throw new Error('failed');}
       if(!res.ok||typeof data.reply!=='string')throw new Error(data.code||'failed');
+      if(apiBase&&/^[a-f0-9]{64}$/.test(data.sessionToken||'')){apiToken=data.sessionToken;try{sessionStorage.setItem(tokenKey,apiToken);}catch{}}
       messages.push({role:'assistant',text:data.reply,sources:data.sourceReferences,contactDraft:data.contactDraft});bubble('assistant',data.reply,data.sourceReferences,data.contactDraft);save();setStatus('');
       document.dispatchEvent(new CustomEvent('companion:chat-state',{detail:{state:'replied'}}));
     }catch(error){messages.pop();log.lastElementChild?.remove();save();input.value=text;setStatus(error.name==='AbortError'?'timeout':(['busy','rate','invalid'].includes(error.message)?error.message:'failed'));}
