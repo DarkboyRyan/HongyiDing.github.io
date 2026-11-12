@@ -90,9 +90,13 @@ h3 { margin: 0; font: 600 21px/1.4 var(--display); letter-spacing: -.4px; }
 #about p { margin: 18px 0 0; color: var(--muted); font-size: 15px; max-width: 64ch; }
 .contact { display: flex; flex-wrap: wrap; gap: 10px 22px; padding: 0; margin: 18px 0 0; list-style: none; }
 .contact li:first-child { flex-basis: 100%; }
-.contact a { display: inline-flex; align-items: center; min-height: 36px; gap: 10px; color: var(--fg); font-size: 14px; text-decoration: none; overflow-wrap: anywhere; }
+.contact a, .contact button { display: inline-flex; align-items: center; min-height: 36px; gap: 10px; color: var(--fg); font-size: 14px; text-decoration: none; overflow-wrap: anywhere; }
+.contact button { padding: 0; border: 0; background: none; font-family: inherit; cursor: pointer; }
+.contact button::after { content: "⧉"; color: var(--accent); }
+.email-copy-status { margin: 10px 0 0; color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+.email-copy-status:empty { margin: 0; }
 .contact a::after { content: "↗"; color: var(--accent); }
-.contact a:hover { color: var(--accent); text-decoration: underline; }
+.contact a:hover, .contact button:hover { color: var(--accent); text-decoration: underline; }
 .footer { margin-top: 58px; padding-block: 24px 38px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
 .footer-updated { display: block; margin-top: 6px; }
 a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }

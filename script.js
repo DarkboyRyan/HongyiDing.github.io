@@ -2,6 +2,40 @@
 
 const LANGUAGE_STORAGE_KEY = "hongyi-portfolio-language";
 
+async function copyOwnerEmail() {
+  const button = document.getElementById("copy-owner-email");
+  const status = document.getElementById("email-copy-status");
+  const email = button.dataset.email;
+  let copied = false;
+  status.textContent = "";
+  try {
+    await navigator.clipboard.writeText(email);
+    copied = true;
+  } catch {
+    // Support local-file previews and browsers without Clipboard API access.
+    const previousFocus = document.activeElement;
+    const field = document.createElement("textarea");
+    field.value = email;
+    field.readOnly = true;
+    field.style.cssText = "position:fixed;top:0;left:0;opacity:0;pointer-events:none;font-size:16px";
+    document.body.append(field);
+    try {
+      field.select();
+      copied = document.execCommand("copy");
+    } catch {
+      copied = false;
+    } finally {
+      field.remove();
+      previousFocus?.focus({ preventScroll: true });
+    }
+  }
+  const key = copied ? "emailCopied" : "emailCopyFailed";
+  status.dataset.i18n = key;
+  status.textContent = translations[document.documentElement.lang.startsWith("zh") ? "zh" : "en"][key];
+}
+
+document.getElementById("copy-owner-email")?.addEventListener("click", copyOwnerEmail);
+
 const projectCards = [...document.querySelectorAll("#projects .card")];
 projectCards.forEach((card) => {
   card.addEventListener("click", () => {
@@ -85,7 +119,9 @@ const translations = {
     aboutTitle: "About",
     aboutBody: "I am pursuing a bachelor's degree in Computer Science and Physics at Northeastern University in Boston and expect to graduate in May 2027. I focus on game development and software engineering, working primarily with C++, C#, and Python. I love games and anime—feel free to get in touch! If you have any questions, feel free to ask my assistant =-=",
     contactTitle: "Contact",
-    contactOwner: "Contact the site owner",
+    contactOwner: "Contact the site owner (copy email)",
+    emailCopied: "Email copied: dinghongyi8@gmail.com",
+    emailCopyFailed: "Could not copy automatically. Please copy this email: dinghongyi8@gmail.com",
     contactCompanion: "Tell Yamoto Koki",
     footerText: "Built with vanilla HTML/CSS.",
     lastUpdated: "Last updated:",
@@ -164,7 +200,9 @@ const translations = {
     aboutTitle: "关于我",
     aboutBody: "我在东北大学波士顿校区攻读计算机科学与物理学士学位，预计 2027 年 5 月毕业。我专注于游戏开发与软件工程，主要使用 C++、C# 和 Python。热爱游戏和动漫，欢迎交流。如果有任何问题都可以询问我的助手 =-=",
     contactTitle: "联系方式",
-    contactOwner: "联系站长",
+    contactOwner: "联系站长（复制邮箱）",
+    emailCopied: "邮箱已复制：dinghongyi8@gmail.com",
+    emailCopyFailed: "自动复制失败，请手动复制邮箱：dinghongyi8@gmail.com",
     contactCompanion: "告诉矢本小季",
     footerText: "使用原生 HTML/CSS 构建。",
     lastUpdated: "最后更新：",

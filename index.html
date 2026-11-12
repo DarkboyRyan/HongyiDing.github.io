@@ -15,7 +15,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Hongyi Ding portfolio preview">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="stylesheet" href="styles.css?v=20261110-footer-updated">
+  <link rel="stylesheet" href="styles.css?v=27f6264075">
   <link rel="stylesheet" href="companion.css?v=464517b3a6">
 <link rel="stylesheet" href="music-player.css?v=20261021-local-audio">
   <link rel="stylesheet" href="companion-chat.css?v=20261110-public-api">
@@ -235,10 +235,11 @@
       <h2 data-i18n="contactTitle">Contact</h2>
       <ul class="contact">
         <li><a href="#companion-chat" data-open-companion-chat data-i18n="contactCompanion" aria-controls="companion-chat">Tell Yamoto Koki</a></li>
-        <li><a href="mailto:dinghongyi8@gmail.com" data-i18n="contactOwner">Contact the site owner</a></li>
+        <li><button type="button" id="copy-owner-email" data-email="dinghongyi8@gmail.com" data-i18n="contactOwner">Contact the site owner (copy email)</button></li>
         <li><a href="https://github.com/DarkboyRyan/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         <li><a href="https://www.linkedin.com/in/hongyi-ding-490456351/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
       </ul>
+      <p id="email-copy-status" class="email-copy-status" role="status" aria-live="polite"></p>
     </section>
     </div>
   </main>
@@ -248,7 +249,7 @@
     <small class="footer-updated"><span data-i18n="lastUpdated">Last updated:</span> <time id="site-updated" datetime="2026-11-10">2026-11-10</time></small>
   </footer>
 
-  <script src="script.js?v=20261110-footer-updated"></script>
+  <script src="script.js?v=694f3bbc80"></script>
   <script src="companion-config.js?v=20261110-public-api"></script>
   <script src="companion.js" defer></script>
 <script src="music-player.js?v=20261021-local-audio" defer></script>
